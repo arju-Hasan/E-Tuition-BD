@@ -38,7 +38,7 @@ const Login = () => {
             <img src={loginImg} alt="login img" />
         </div>
           <div className="card bg-base-100 w-full mx-auto max-w-sm shrink-0 shadow-2xl shadow-secondary">
-            <h3 className="text-3xl text-center">Welcome back</h3>
+            <h3 className="text-3xl text-center font-extrabold pt-2">Welcome back</h3>
             <p className='text-center'>Please Login</p>
             <form className="card-body" onSubmit={handleSubmit(handleLogin)}>
               <div className='flex justify-around font-bold'>
@@ -67,22 +67,15 @@ const Login = () => {
 
                 <fieldset className="fieldset">
                     {/* email field */}
-                    <label className="label">Email</label>
+                    <label className="label font-bold text-black ">Email</label>
                     <input type="email" {...register('email', { required: true })} className="input" placeholder="Email" />
                     {
                         errors.email?.type === 'required' && <p className='text-red-500'>Email is required</p>
                     }
-
-                    {/* password field */}
-                    {/* <label className="label">Password</label>
-                    <input type="password" {...register('password', { required: true, minLength: 6 })} className="input" placeholder="Password" />
-                    {
-                        errors.password?.type === 'minLength' && <p className='text-red-500'>Password must be 6 characters  or longer </p>
-                    } */}
-                     <label className="label">Password</label>
+                     <label className="label font-bold text-black ">Password</label>
                     <div className='relative'>
                         <input type={show ? "text" : "password"} {...register('password', { required: true, minLength: 6 })}  
-                        className={`input input-bordered w-full ${errors.password ? "border-red-500" : ""}`} placeholder="Password (e.g. MyPass123!)" />
+                        className={`input input-bordered w-full ${errors.password ? "border-red-500" : ""}`} placeholder="Password" />
                         <span onClick={() => setShow(!show)} className='absolute text-lg right-8 top-[11px] cursor-pointer z-20'>
                             {show ? <FaEye /> : <IoEyeOff />}
                         </span>
@@ -90,12 +83,12 @@ const Login = () => {
                     {/* =============== */}
 
 
-                    <div><a className="link link-hover">Forgot password?</a></div>
+                    <div><a className="link link-hover hover:text-blue-600">Forgot password?</a></div>
                     <button className="btn btn-primary hover:btn-secondary mt-4"> Login as a {role === "tutor" ? "Tutor" : "Student"}</button>
                 </fieldset>
-                <p>New to Zap Shift <Link
+                <p>New to E-TuitoinBD <Link
                     state={location.state}
-                    className='text-blue-400 underline'
+                    className='text-blue-600 underline'
                     to="/register">Register</Link></p>
             </form>
             <SocialLogin></SocialLogin>
