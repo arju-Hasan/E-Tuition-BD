@@ -1,9 +1,14 @@
 import React from 'react';
+import { Outlet } from 'react-router';
+import Hero from '../Hero/Hero';
+import Container from '../../../Components/Container';
 
 const Home = () => {
     return (
-        <div className='text-center'>
-            this is a home 
+        <div>
+            <Container>
+              <Hero />  
+            </Container>           
         </div>
     );
 };

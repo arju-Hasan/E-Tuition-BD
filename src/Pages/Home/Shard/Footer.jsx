@@ -11,7 +11,7 @@ import app from '../../../assets/pay-icon/app.png'
 
 const Footer = () => {
     return (
-        
+        <div className='bg-base-300'>
        <Container>       
         <footer className="footer py-0  bg-base-300 text-base-content grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
         <div className='col-span-2 md:col-span-3 p-4'>
@@ -69,10 +69,9 @@ const Footer = () => {
             <p className=''>Copyright © {new Date().getFullYear()} - All right reserved by E-TuitionBD</p>
              <h2>Developed by —<span className='text-blue-600'><a href="https://github.com/arju-Hasan">Arju Hasan</a></span></h2>
 
-        </div>
-        
-        
+        </div>     
        </Container>
+       </div>
     );
 };
 
