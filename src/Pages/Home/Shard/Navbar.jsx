@@ -3,7 +3,6 @@ import { Link, NavLink } from 'react-router';
 import Logo from '../../../Components/Logo/Logo';
 import Container from '../../../Components/Container';
 import useAuth from '../../../Hooks/useAuth';
-import styled from 'styled-components';
 
 
 const NavBar = () => {
@@ -17,26 +16,24 @@ const NavBar = () => {
                 console.log(error)
             })
     }
+    const activeLink = ({ isActive }) =>
+    isActive ? " bg-primary text-white hover:bg-secondary px-3 py-2 rounded" : "";
 
     const links = <>
-        <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/tuitions">Tuitions</NavLink></li>
-        <li><NavLink to="/tutiors">Tutiors</NavLink></li>
-        <li><NavLink to="/contact">Contact</NavLink></li>
-        {
-        user ? (
-            <>
-            <li><NavLink to="/dashboard">Dashboard</NavLink></li>
-            <li><NavLink to="/tutors">Tutors</NavLink></li>
+        <li><NavLink className={activeLink} to="/">Home</NavLink></li>
+        <li><NavLink className={activeLink} to="/tuitions">Tuitions</NavLink></li>
+        <li><NavLink className={activeLink} to="/tutiors">Tutiors</NavLink></li>
+        <li><NavLink className={activeLink} to="/contact">Contact</NavLink></li>
+        {user ? (<>
+        <li><NavLink className={activeLink} to="/dashboard">Dashboard</NavLink></li>
+        <li><NavLink className={activeLink} to="/tutors">Tutors</NavLink></li>
             </>
-        ) : null
-        }         
-              
-        <li><NavLink to="/about">About Us</NavLink></li>
+        ) : null}            
+        <li><NavLink className={activeLink} to="/about">About Us</NavLink></li>
 
     </>
     return (
-        <div className='shadow-sm bg-white/30 backdrop-blur  sticky top-0 z-10'>
+        <div className='shadow-sm bg-white/30 backdrop-blur   sticky top-0 z-10'>
         <Container>    
         <div className="navbar min-h-0 p-0">
             <div className="navbar-start ">
@@ -55,7 +52,7 @@ const NavBar = () => {
                 </span>
             </div>
             <div className="navbar-center hidden lg:flex ">
-                <ul className="menu menu-horizontal px-1 p-0 m-0">
+                <ul className="menu menu-horizontal px-1 p-0 m-0 font-semibold">
                     {links}
                 </ul>
             </div>
@@ -64,8 +61,8 @@ const NavBar = () => {
                 loading ? <span className="loading loading-ring loading-xl"></span> :
                  user ? (
                 <div className="dropdown dropdown-end">
-                    <div tabIndex={0} role="button" className=" m-1">
-                        <img className='w-10 mx-auto rounded-full overflow-hidden border border-secondary' src={user?.photoURL || "https://i.ibb.co.com/kgMj4c4G/pngtree-user-icon-isolated-on-abstract-background-png-image-5192160.jpg"} alt="Avater" />
+                    <div tabIndex={0} role="button" className=" m-1 ">
+                        <img className='w-10 mx-auto rounded-full overflow-hidden border border-secondary mr-1' src={user?.photoURL || "https://i.ibb.co.com/kgMj4c4G/pngtree-user-icon-isolated-on-abstract-background-png-image-5192160.jpg"} alt="Avater" />
 
                     </div>
                     <ul tabIndex="-1" className="dropdown-content menu bg-base-200 rounded-box z-1 w-52 p-2 shadow-sm space-y-3 text-center">
@@ -90,10 +87,7 @@ const NavBar = () => {
                 </Link>
 
                 )
-               } 
-            {/* //             <a onClick={handleLogOut} className="btn">Log Out</a>
-            //              <Link className='btn btn-sm' to="/login">Log in</Link>               */}
-            
+               }             
             </div>
         </div>
        

@@ -40,3 +40,9 @@ h66{
   background: #83807e; /* info */
   background: #0aac2d;
 }
+
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
