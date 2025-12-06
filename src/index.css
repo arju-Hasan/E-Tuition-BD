@@ -46,5 +46,19 @@ h66{
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-15px); }
 }
+@keyframes zoom {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+.animate-blink {
+  display: inline-block;
+  animation: blink 1s step-start infinite;
+}
 
 
