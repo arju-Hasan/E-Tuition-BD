@@ -4,8 +4,11 @@ import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Auth/Login";
 import Register from "../Pages/Auth/Register";
 import AboutUs from "../Pages/AboutUs/AboutUs";
-import Error404 from "../Pages/Error404/Error404";
+import Error404 from "../Components/Error404/Error404";
 import tutiors from "../Pages/Tutors/tutiors";
+import tuitions from "../Pages/Tuitions/tuitions";
+import DashboardLayout from "../Layout/DashboardLayout";
+import PrivateRoute from "./PrivateRoute";
 
 
 export const router = createBrowserRouter([
@@ -27,10 +30,36 @@ export const router = createBrowserRouter([
       Component: tutiors
     },
     {
-      path: '/'
+      path: '/tuitions',
+      Component: tuitions
     }
     ]
   },
+  {
+    path: '/dashboard',
+    // Component: DashboardLayout,
+    element:<PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute> ,
+    children:[
+      {
+        path: '/',
+        Component: DashboardHome,
+      }
+    ]
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {
     path: '/login',
     Component: Login

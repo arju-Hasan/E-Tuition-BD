@@ -1,14 +1,26 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router';
 import Logo from '../../../Components/Logo/Logo';
 import Container from '../../../Components/Container';
 import useAuth from '../../../Hooks/useAuth';
-import ThemeToggleButton from '../../../ToggleTheme/Theme';
+import useAxiosSecure from '../../../Hooks/useAxiosSecure';
+
 
 
 const NavBar = () => {
-
     const { user, logOut, loading } = useAuth();
+    const axiosSecure = useAxiosSecure();
+    console.log("firebase user", user);
+     const [userData, setUserData] = useState(null); //db user data
+      useEffect(() => {
+    if (user?.email) {
+      axiosSecure
+        .get(`/users/${user.email}`)
+        .then(res => setUserData(res.data))
+        .catch(err => console.log(err));
+    }
+  }, [user?.email]);
+        console.log("DB user data", userData?.userId);
 
     const handleLogOut = () => {
         logOut()
@@ -17,6 +29,7 @@ const NavBar = () => {
                 console.log(error)
             })
     }
+    console.log(user);
     const activeLink = ({ isActive }) =>
     isActive ? " bg-primary text-white hover:bg-secondary px-3 py-2 rounded" : "";
 
@@ -66,9 +79,9 @@ const NavBar = () => {
                {
                 loading ? <span className="loading loading-ring loading-xl"></span> :
                  user ? (<>
-                     <nav className="flex justify-between items-center p-4 bg-base-100">
+                     {/* <nav className="flex justify-between items-center p-4 bg-base-100">
                     <ThemeToggleButton />
-                    </nav>
+                    </nav> */}
                 <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className=" m-1 ">
                         <img className='w-10 h-10 mx-auto rounded-full overflow-hidden border border-secondary mr-1' src={user?.photoURL || "https://i.ibb.co.com/kgMj4c4G/pngtree-user-icon-isolated-on-abstract-background-png-image-5192160.jpg"} alt="Avater" />
@@ -80,6 +93,7 @@ const NavBar = () => {
                         </Link>
 
                         <h2 className='text-xl font-semebold'>{user?.displayName}</h2>
+                        <span className='font-extrabold'>ID: {userData?.userId}</span>
                         <p className='text-black'>{user?.email}</p>
                         <button onClick={handleLogOut} 
                         className={"btn bg-primary hover:bg-secondary text-white"}

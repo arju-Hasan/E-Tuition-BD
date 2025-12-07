@@ -52,7 +52,7 @@ const Hero = () => {
                     <img
                     src={onlineImg}
                     alt="teacher img"
-                    className="w-full h-auto max-w-full p-10 object-contain"
+                    className="mx-auto"
                     style={{
                         animation: 'zoom 3s ease-in-out infinite',
                         transformOrigin: 'center',

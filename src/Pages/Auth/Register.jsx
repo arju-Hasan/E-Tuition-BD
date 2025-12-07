@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm,  } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router';
 import SocialLogin from './SocialLogin';
@@ -11,16 +11,31 @@ import loginImg from '../../assets/login2.png'
 import Logo from '../../Components/Logo/Logo';
 import { LockOpen , LockKeyhole } from 'lucide-react';
 import { RxLockOpen2 } from "react-icons/rx";
+import { toast } from 'react-toastify';
+
+
+
+
+
+
 
 const Register = () => {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, watch, resetField, formState: { errors } } = useForm();
     const { registerUser, updateUserProfile } = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
     const axiosSecure = useAxiosSecure();
-      const [role, setRole] = useState("student");
+    const [role, setRole] = useState('user');
 
-
+    useEffect(() => {
+  if (role === "user") {
+    resetField("lastEducation");
+    resetField("experience");
+    resetField("gender");
+    resetField("district");
+  }
+}, [role]);
+ 
     const handleRegistration = (data) => {
 
     const profileImg = data.photo[0];
@@ -49,15 +64,16 @@ const Register = () => {
                         lastEducation: data.lastEducation,
                         experience: data.experience,
                         gender: data.gender,
-                        district: data.district
+                        district: data.district,
+                        Phone: data.phone
                     })
                     }
                     console.log(userInfo);
                     axiosSecure.post('/users', userInfo)
                         .then(res => {
                             if (res.data.insertedId) {
-                                console.log('user created in the database');
-                            }
+                                // ✅ Success Toast
+                                toast.success("Registration Successful!")}
                         })
                     // update user profile to firebase
                     const userProfile = {
@@ -104,8 +120,8 @@ return (
                         <img className='h-13 w-13 rounded-full' src={student} alt="" />
                         <input 
                         type="checkbox"
-                        checked={role === "student"}
-                        onChange={() => setRole("student")}
+                        checked={role === "user"}
+                        onChange={() => setRole("user")}
                         className="checkbox checkbox-primary" 
                         />
                         <p>Student</p>
@@ -137,7 +153,7 @@ return (
                    {/* Number field */}
                <div className='flex flex-col'>
                  <label className="label text-black font-semibold">Phone</label>
-                <input type="number" {...register('phone', { required:'' })} className="input"placeholder="+8801*********" />
+                <input type="number" {...register('phone', { required: true })} className="input"placeholder="+8801*********" />
                 {errors.phone?.type === 'required' && <p className='text-red-500'>Phone isrequired.</p>}
                </div>
                {/* Tutor Specific Fields */}

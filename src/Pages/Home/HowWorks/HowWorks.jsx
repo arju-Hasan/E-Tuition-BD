@@ -58,7 +58,7 @@ const HowItWorks = () => {
             <span 
             className='text-primary font-extrabold'>H</span>ow <span 
             className='text-primary font-extrabold'>I</span>t <span 
-            className='text-primary font-extrabold'>Works</span>
+            className='text-primary font-extrabold'>W</span>orks
             </h2>               
         <p className='text-center text-info md:text-xl p-2'>Here's how it works for Tutors</p>
     </div>
