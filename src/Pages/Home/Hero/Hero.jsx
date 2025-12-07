@@ -20,7 +20,7 @@ const Hero = () => {
             <br /> for Home & Online Tuitions</h2>
             <p className="text-xl md:text-3xl flex text-info justify-center md:justify-start items-center  pl-8 gap-2"> <MapPin /> Find the Right Tutor in Your Area</p>
             
-            <button className="relative p-3 grid mx-auto items-start md:items-center rounded-full group mt-6 md:ml-15 shadow hover:shadow-primary hover:shadow-2xl">
+            <button className="relative p-3 grid mx-auto items-start md:items-center rounded-full group mt-6 md:ml-15 shadow shadow-xl shadow-primary hover:shadow-primary hover:shadow-2xl">
             {/* Gradient border on hover */}
             <span className="absolute inset-0 rounded-full bg-gradient-to-r from-[#f15a24] to-[#004aad] opacity-0 group-hover:opacity-100 transition-opacity"></span>
 
@@ -62,8 +62,8 @@ const Hero = () => {
                     <h3 className="text-bold text-black text-xl text-center">Looking for interesting tuition jobs to excel your <br /> teaching experience?</h3>
                     <p className="text-info p-4 text-center">If teaching jobs interests you, then you are on the right place. tutorsheba.com, we often have 500+ open home tuition jobs that are genuine and 100% verified. Whether you are starting your career as a tuition teacher or an expert in your field, we can help you find your next big tuition job. You can search and apply to the tuition jobs that best fit your skills, favorable location, class and subjects.</p>
                     <StyledWrapper className="flex justify-center p-10">
-                    <button className="shadow__btn">
-                        uiverse
+                    <button className="shadow__btn flex gap-2">
+                        SEARCH TUTION <Search />
                     </button>
                     </StyledWrapper>
                 </div>
