@@ -10,6 +10,7 @@ import student from '../../assets/10.png'
 import loginImg from '../../assets/login2.png'
 import Logo from '../../Components/Logo/Logo';
 import { LockOpen , LockKeyhole } from 'lucide-react';
+import { RxLockOpen2 } from "react-icons/rx";
 
 const Register = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -233,7 +234,7 @@ return (
                 </div>
            </div>   
            <div>
-            <span onClick={() => setShow(!show)} className='flex gap-2 text-xl pt-1'>{show ? <LockOpen /> :<LockKeyhole /> } Show Password</span>
+            <span onClick={() => setShow(!show)} className='flex gap-2 text-xl pt-1'>{show ? <RxLockOpen2 /> :<LockKeyhole /> } Show Password</span>
             </div>             
                 <button className="btn btn-primary hover:btn-secondary mt-4">Register</button>
             </fieldset>

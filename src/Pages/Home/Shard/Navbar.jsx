@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, NavLink } from 'react-router';
 import Logo from '../../../Components/Logo/Logo';
 import Container from '../../../Components/Container';
 import useAuth from '../../../Hooks/useAuth';
+import ThemeToggleButton from '../../../ToggleTheme/Theme';
 
 
 const NavBar = () => {
@@ -30,8 +31,13 @@ const NavBar = () => {
             </>
         ) : null}            
         <li><NavLink className={activeLink} to="/about">About Us</NavLink></li>
-
     </>
+
+
+
+
+
+
     return (
         <div className='shadow-sm bg-white/30 backdrop-blur   sticky top-0 z-10'>
         <Container>    
@@ -59,7 +65,10 @@ const NavBar = () => {
             <div className="navbar-end ">
                {
                 loading ? <span className="loading loading-ring loading-xl"></span> :
-                 user ? (
+                 user ? (<>
+                     <nav className="flex justify-between items-center p-4 bg-base-100">
+                    <ThemeToggleButton />
+                    </nav>
                 <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className=" m-1 ">
                         <img className='w-10 h-10 mx-auto rounded-full overflow-hidden border border-secondary mr-1' src={user?.photoURL || "https://i.ibb.co.com/kgMj4c4G/pngtree-user-icon-isolated-on-abstract-background-png-image-5192160.jpg"} alt="Avater" />
@@ -77,7 +86,7 @@ const NavBar = () => {
                         // className='slice'
                         >Sign Out</button>
                     </ul>
-                </div>
+                </div></>
                  ) : (
                 <Link
                     to="/login"

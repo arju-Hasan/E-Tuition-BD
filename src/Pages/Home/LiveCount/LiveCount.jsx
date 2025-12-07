@@ -4,7 +4,7 @@ import homeT from '../../../assets/Tuitior/home-t.png'
 import onlineT from '../../../assets/Tuitior/online.png'
 import groupT from '../../../assets/Tuitior/group.png'
 import { NavLink } from "react-router";
-import styled from "styled-components";
+
 
 const LiveCount = () => {
   return (
@@ -38,7 +38,7 @@ const LiveCount = () => {
     </div>
     {/* Tuition Types */}
     <div className="">        
-        <h2 className='text-2xl md:text-4xl font-bold text-center pt-8 underline underline-offset-2 decoration-primary decoration-5 text-secondary'>
+        <h2 className='text-2xl md:text-4xl font-bold text-center pt-8 underline underline-offset-2 decoration-primary decoration-4 text-secondary'>
             <span 
             className='text-primary font-extrabold'>T</span>uition  <span 
             className='text-primary font-extrabold'>T</span>ype

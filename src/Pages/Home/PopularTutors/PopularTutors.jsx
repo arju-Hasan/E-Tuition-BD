@@ -14,7 +14,7 @@ const PopularTutors = () => {
         <div>
             {/* title */}
             <div>
-                <h2 className='text-2xl md:text-4xl font-bold text-center pt-8 underline underline-offset-2 decoration-primary decoration-5 text-secondary'>
+                <h2 className='text-2xl md:text-4xl font-bold text-center pt-8 underline underline-offset-2 decoration-primary decoration-4 text-secondary'>
                     <span className='text-primary font-extrabold'>O</span>ur <span className='text-primary font-extrabold'>P</span>opular <span className='text-primary font-extrabold'>T</span>utors
                     </h2>
                 <div className='grid grid-cols-3 p-4 items-center'>
@@ -29,7 +29,7 @@ const PopularTutors = () => {
             {/* Subject Specialist*/}
             <div className='mt-10'>
                 <div>
-                <h2 className='text-2xl md:text-4xl font-bold text-center pt-8 underline underline-offset-2 decoration-primary decoration-5 text-secondary'>
+                <h2 className='text-2xl md:text-4xl font-bold text-center pt-8 underline underline-offset-2 decoration-primary decoration-4 text-secondary'>
                     <span 
                     className='text-primary font-extrabold'>F</span>ind  <span 
                     className='text-primary font-extrabold'>Y</span>our  <span 

@@ -10,19 +10,10 @@ export default defineConfig({
   ],
 })
 
-// tailwind.config.js
-// module.exports = {
-//   theme: {
-//     extend: {
-//       keyframes: {
-//         zoom: {
-//           '0%, 100%': { transform: 'scale(1)' },
-//           '50%': { transform: 'scale(1.1)' },
-//         },
-//       },
-//       animation: {
-//         'zoom-in-out': 'zoom 3s ease-in-out infinite',
-//       },
-//     },
-//   },
-// };
+module.exports = {
+  darkMode: "class", // class-based dark mode
+  plugins: [require("daisyui")],
+  daisyui: {
+    themes: ["light", "dark"], // light & dark theme support
+  },
+};

@@ -4,6 +4,8 @@ import Hero from '../Hero/Hero';
 import Container from '../../../Components/Container';
 import PopularTutors from '../PopularTutors/PopularTutors';
 import LiveCount from '../LiveCount/LiveCount';
+import ReviewUs from '../ReviewUs/ReviewUs';
+import HowWorks from '../HowWorks/HowWorks';
 
 const Home = () => {
     return (
@@ -12,6 +14,9 @@ const Home = () => {
               <Hero />  
               <PopularTutors />
               <LiveCount />
+              <ReviewUs />
+              <HowWorks/>
+
             </Container>           
         </div>
     );
