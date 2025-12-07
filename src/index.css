@@ -82,4 +82,10 @@ h66{
     @apply font-bold text-3xl shadow-lg shadow-secondary py-5 border-1 rounded-2xl flex justify-center items-center h-5/8 w-7/8 mx-auto;
   }
 }
-
+.profile-img {
+  position: relative;
+  border: 4px solid #004aad;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  /* border-radius: 30% 70% 60% 20% / 30% 30% 80% 70%; */
+  /* border-radius:60% 20%  30% 70% /80% 70% 30% 30% ; */
+}

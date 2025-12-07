@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import tuition from '../../../assets/tuition1.webp'
 import { GraduationCap, MapPin, Search } from "lucide-react";
 import styled from 'styled-components';

@@ -9,6 +9,9 @@ import tutiors from "../Pages/Tutors/tutiors";
 import tuitions from "../Pages/Tuitions/tuitions";
 import DashboardLayout from "../Layout/DashboardLayout";
 import PrivateRoute from "./PrivateRoute";
+import DashboardHome from "../Dashboard/DashboardHome/DashboardHome";
+import AdminDashboardHome from "../Dashboard/DashboardHome/AdminDashboardHome";
+import AdminRoute from "./AdminRoute";
 
 
 export const router = createBrowserRouter([
@@ -41,8 +44,12 @@ export const router = createBrowserRouter([
     element:<PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute> ,
     children:[
       {
-        path: '/',
+        index:true,
         Component: DashboardHome,
+      },
+      {
+        path: '/dashboard/admin',
+        element:<AdminRoute><AdminDashboardHome /></AdminRoute> 
       }
     ]
   },

@@ -8,7 +8,7 @@ const DashboardLayout = () => {
         <div>
             <NavBar />
             <Outlet />
-            <Footer />
+            {/* <Footer /> */}
         </div>
     );
 };

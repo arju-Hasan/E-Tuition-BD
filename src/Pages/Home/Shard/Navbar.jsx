@@ -10,7 +10,7 @@ import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 const NavBar = () => {
     const { user, logOut, loading } = useAuth();
     const axiosSecure = useAxiosSecure();
-    console.log("firebase user", user);
+    // console.log("firebase user", user);
      const [userData, setUserData] = useState(null); //db user data
       useEffect(() => {
     if (user?.email) {
@@ -20,7 +20,7 @@ const NavBar = () => {
         .catch(err => console.log(err));
     }
   }, [user?.email]);
-        console.log("DB user data", userData?.userId);
+        // console.log("DB user data", userData?.userId);
 
     const handleLogOut = () => {
         logOut()
@@ -29,7 +29,7 @@ const NavBar = () => {
                 console.log(error)
             })
     }
-    console.log(user);
+    // console.log(user);
     const activeLink = ({ isActive }) =>
     isActive ? " bg-primary text-white hover:bg-secondary px-3 py-2 rounded" : "";
 
@@ -37,10 +37,10 @@ const NavBar = () => {
         <li><NavLink className={activeLink} to="/">Home</NavLink></li>
         <li><NavLink className={activeLink} to="/tuitions">Tuitions</NavLink></li>
         <li><NavLink className={activeLink} to="/tutiors">Tutiors</NavLink></li>
-        <li><NavLink className={activeLink} to="/contact">Contact</NavLink></li>
+        <li><NavLink className={activeLink} to="/">Contact</NavLink></li>
         {user ? (<>
         <li><NavLink className={activeLink} to="/dashboard">Dashboard</NavLink></li>
-        <li><NavLink className={activeLink} to="/tutors">Tutors</NavLink></li>
+        {/* <li><NavLink className={activeLink} to="/tutors">Tutors</NavLink></li> */}
             </>
         ) : null}            
         <li><NavLink className={activeLink} to="/about">About Us</NavLink></li>

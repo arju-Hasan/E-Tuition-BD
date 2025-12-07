@@ -6,7 +6,7 @@ const ThemeToggleButton = () => {
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") || "light";
     document.documentElement.setAttribute("data-theme", savedTheme);
-    setTheme(savedTheme);
+    // setTheme(savedTheme);
   }, []);
 
   const toggleTheme = () => {

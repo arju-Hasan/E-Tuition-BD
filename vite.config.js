@@ -10,10 +10,10 @@ export default defineConfig({
   ],
 })
 
-module.exports = {
-  darkMode: "class", // class-based dark mode
-  plugins: [require("daisyui")],
-  daisyui: {
-    themes: ["light", "dark"], // light & dark theme support
-  },
-};
+// module.exports = {
+//   darkMode: "class", // class-based dark mode
+//   plugins: [require("daisyui")],
+//   daisyui: {
+//     themes: ["light", "dark"], // light & dark theme support
+//   },
+// };
