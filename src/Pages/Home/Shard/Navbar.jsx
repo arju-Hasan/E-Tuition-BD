@@ -12,6 +12,7 @@ const NavBar = () => {
     const axiosSecure = useAxiosSecure();
     // console.log("firebase user", user);
      const [userData, setUserData] = useState(null); //db user data
+
       useEffect(() => {
     if (user?.email) {
       axiosSecure
@@ -36,11 +37,13 @@ const NavBar = () => {
     const links = <>
         <li><NavLink className={activeLink} to="/">Home</NavLink></li>
         <li><NavLink className={activeLink} to="/tuitions">Tuitions</NavLink></li>
-        <li><NavLink className={activeLink} to="/tutiors">Tutiors</NavLink></li>
-        <li><NavLink className={activeLink} to="/">Contact</NavLink></li>
+        <li><NavLink className={activeLink} to="/tutiors">Tutiors</NavLink></li>        
+        <li><NavLink className={activeLink} to="/c">Contact</NavLink></li>
         {user ? (<>
         <li><NavLink className={activeLink} to="/dashboard">Dashboard</NavLink></li>
-        {/* <li><NavLink className={activeLink} to="/tutors">Tutors</NavLink></li> */}
+        {["user", "super-admin"].includes(userData?.role) && (
+         <li><NavLink className={activeLink} to="/">Tuitions post</NavLink></li>   
+        )}
             </>
         ) : null}            
         <li><NavLink className={activeLink} to="/about">About Us</NavLink></li>

@@ -10,8 +10,16 @@ import tuitions from "../Pages/Tuitions/tuitions";
 import DashboardLayout from "../Layout/DashboardLayout";
 import PrivateRoute from "./PrivateRoute";
 import DashboardHome from "../Dashboard/DashboardHome/DashboardHome";
-import AdminDashboardHome from "../Dashboard/DashboardHome/AdminDashboardHome";
 import AdminRoute from "./AdminRoute";
+import TutorRequest from "../Dashboard/UserPage/TutorRequest";
+import PostedRequest from "../Dashboard/UserPage/PostedRequest";
+import UpdateProfile from "../Dashboard/UserPage/UpdateProfile";
+import PandingJobRequest from "../Dashboard/AdminPage/PandingJobRequest";
+import PandingUserRequest from "../Dashboard/AdminPage/PandingUserRequest";
+import UserManagement from "../Dashboard/AdminPage/UserManagement";
+import JobRequest from "../Dashboard/TutorPage/JobRequest";
+import JobPosted from "../Dashboard/TutorPage/JobPosted";
+import TutorProfile from "../Dashboard/TutorPage/TutorProfile";
 
 
 export const router = createBrowserRouter([
@@ -48,8 +56,44 @@ export const router = createBrowserRouter([
         Component: DashboardHome,
       },
       {
-        path: '/dashboard/admin',
-        element:<AdminRoute><AdminDashboardHome /></AdminRoute> 
+        path: '/dashboard/tutorrequest',
+        Component: TutorRequest,
+      },
+      {
+        path: '/dashboard/sPosted',
+        Component: PostedRequest
+      },
+      {
+        path: '/dashboard/userprofile',
+        Component:UpdateProfile
+      },
+      {
+        path: '/dashboard/pjrequest',
+        element:<AdminRoute><PandingJobRequest /></AdminRoute>
+      },
+      {
+        path: '/dashboard/purequest',
+        element: <AdminRoute><PandingUserRequest /></AdminRoute>
+      },
+      {
+        path: '/dashboard/users-management',
+        element:<AdminRoute><UserManagement /></AdminRoute> 
+      },
+      {
+        path: '/dashboard/jobrequest',
+        element: <JobRequest />
+      },
+      {
+        path: '/dashboard/postedrequesr',
+        element: <JobPosted />
+      },
+      {
+        path: '/dashboard/tutorprofile',
+        element: <TutorProfile />
+      },
+      {
+        path: '/dashboard/*',
+        Component: Error404
       }
     ]
   },
