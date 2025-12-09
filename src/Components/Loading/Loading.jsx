@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Loader = () => {
   return (
-    <StyledWrapper>
+    <StyledWrapper className='h-full max-w-full grid justify-center items-center'>
       <div className="book">
         <div className="book__pg-shadow" />
         <div className="book__pg" />

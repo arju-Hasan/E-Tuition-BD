@@ -9,9 +9,10 @@ import { FaMotorcycle, FaRegCreditCard, FaTasks, FaUsers } from 'react-icons/fa'
 import { RiEBikeFill } from 'react-icons/ri';
 import { SiGoogletasks } from 'react-icons/si';
 import { CiDeliveryTruck } from 'react-icons/ci';
-import {Bike, House, PackageOpen, Receipt, Send, Settings, SquareArrowLeft, SquareArrowRight } from 'lucide-react';
+import { SquareArrowLeft, SquareArrowRight } from 'lucide-react';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
 import useAuth from '../Hooks/useAuth';
+import { GiHamburgerMenu } from "react-icons/gi";
 
 const DashboardLayout = () => {
     const { user, logOut, loading } = useAuth();
@@ -60,7 +61,7 @@ const DashboardLayout = () => {
                 {/* Navbar */}
                 <nav className="navbar w-full bg-base-300">
                 <label htmlFor="my-drawer-4" aria-label="open sidebar" className="btn btn-square btn-ghost text-primary">
-                    {isOpen ? <SquareArrowLeft /> : <SquareArrowRight />}
+                    {isOpen ? <SquareArrowLeft /> : <GiHamburgerMenu className='text-2xl' />}
                 </label>
                 <div className="px-4 text-2xl font-bold">
                     <span className="text-rotate">
@@ -71,6 +72,7 @@ const DashboardLayout = () => {
                 </nav>
                 {/* Page content here */}
                 <Outlet></Outlet>
+                <Footer />
 
             </div>
 
@@ -83,7 +85,7 @@ const DashboardLayout = () => {
                     <ul className="menu w-full grow">
                         {/* List item */}
                         <li>
-                            <Link to="/"><img src={logoImg} alt="" /></Link>
+                            <Link className='is-drawer-close:hidden bg-base-100 is-drawer-close:tooltip-right mb-5' to="/"><img src={logoImg} alt="" /></Link>
                         </li>                      
 
                         {/* all user */}

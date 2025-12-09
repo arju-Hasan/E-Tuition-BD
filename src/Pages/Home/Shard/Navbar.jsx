@@ -55,7 +55,7 @@ const NavBar = () => {
 
 
     return (
-        <div className='shadow-sm bg-white/30 backdrop-blur   sticky top-0 z-10'>
+        <div className='shadow-sm bg-white/30 backdrop-blur sticky top-0 z-10'>
         <Container>    
         <div className="navbar min-h-0 p-0">
             <div className="navbar-start ">

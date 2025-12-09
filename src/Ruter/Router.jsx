@@ -81,7 +81,8 @@ export const router = createBrowserRouter([
       },
       {
         path: '/dashboard/jobrequest',
-        element: <JobRequest />
+        element: <JobRequest />,
+        loader: () => fetch('/serviceCenters.json').then(res => res.json())
       },
       {
         path: '/dashboard/postedrequesr',
