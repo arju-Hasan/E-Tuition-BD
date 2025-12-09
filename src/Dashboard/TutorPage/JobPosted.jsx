@@ -4,51 +4,26 @@ import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { FaMagnifyingGlass, FaTrashCan } from "react-icons/fa6";
-import { FiEdit } from 'react-icons/fi';git 
+import { FiEdit } from 'react-icons/fi';
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { useQuery } from '@tanstack/react-query';
 
 const JobPosted = () => {
-  const { user } = useAuth();
-  const [tutors, setTutors] = useState([]);
-  const { register, handleSubmit, reset } = useForm();
+   const { user } = useAuth();
+    const axiosSecure = useAxiosSecure();
 
-  // Load tutors for this user
-  useEffect(() => {
-    const fetchTutors = async () => {
-      if (!user?.email) return;
+    const { data: result = [], refetch } = useQuery({
+        queryKey: ['tutors', user?.email],
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/tutors/email?email=${user.email}`);
+            return res.data;
+        }
+    })
+    const tutors = result.data || [];
+console.log(tutors);
+console.log(user);
 
-      try {
-        const res = await axios.get(`http://localhost:3000/tutors/email?email=${user.email}`);
-        setTutors(res.data.data || []);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchTutors();
-  }, [user?.email]);
-
-  // Update handler
-  const onSubmit = async (data) => {
-    try {
-     const res = await axios.put(`http://localhost:3000/tutors/${data._id}`, data);
-      if (res.data.success) {
-        Swal.fire({
-          icon: "success",
-          title: "Tutor Updated!",
-          timer: 2000,
-          showConfirmButton: false
-        });
-      }
-    } catch (error) {
-      console.error(error);
-      Swal.fire({
-        icon: "error",
-        title: "Update Failed",
-        text: error.message
-      });
-    }
-  };
-//   =======================
-   const handleParcelDelete = id => {
+    const handleParcelDelete = id => {
         console.log(id);
 
         Swal.fire({
@@ -62,7 +37,7 @@ const JobPosted = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                axiosSecure.delete(`/parcels/${id}`)
+                axiosSecure.delete(`/tutors/${id}`)
                     .then(res => {
                         console.log(res.data);
 
@@ -83,7 +58,7 @@ const JobPosted = () => {
             }
         });
     }
-//========================
+
 
   return (
     <div className=" mx-auto p-5 mt-2">
@@ -103,16 +78,16 @@ const JobPosted = () => {
             </div>
             <div>
                   <button className='btn btn-square hover:bg-primary'>
-                                        <FaMagnifyingGlass />
-                                    </button>
-                                    <button className='btn btn-square hover:bg-primary mx-2'>
-                                        <FiEdit></FiEdit>
-                                    </button>
-                                    <button
-                                        onClick={() => handleParcelDelete(tutors._id)}
-                                        className='btn btn-square hover:bg-primary'>
-                                        <FaTrashCan />
-                                    </button>
+                          <FaMagnifyingGlass />
+                      </button>
+                      <button className='btn btn-square hover:bg-primary mx-2'>
+                          <FiEdit></FiEdit>
+                      </button>
+                      <button
+                          onClick={() => handleParcelDelete(t._id)}
+                          className='btn btn-square hover:bg-primary'>
+                          <FaTrashCan />
+                      </button>
             </div>
         </div>
       ))}

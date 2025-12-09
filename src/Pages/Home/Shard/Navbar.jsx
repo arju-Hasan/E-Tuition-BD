@@ -87,12 +87,12 @@ const NavBar = () => {
                     </nav> */}
                 <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className=" m-1 ">
-                        <img className='w-10 h-10 mx-auto rounded-full overflow-hidden border border-secondary mr-1' src={user?.photoURL || "https://i.ibb.co.com/kgMj4c4G/pngtree-user-icon-isolated-on-abstract-background-png-image-5192160.jpg"} alt="Avater" />
+                        <img className='w-10 h-10 mx-auto rounded-full overflow-hidden border border-secondary mr-1' src={user?.photoURL || "https://i.ibb.co.com/kgMj4c4G/pngtree-user-icon-isolated-on-abstract-background-png-image-5192160.jpg"} alt="Avatar" referrerPolicy='no-referrer' />
 
                     </div>
                     <ul tabIndex="-1" className="dropdown-content menu bg-base-200 rounded-box z-1 w-52 p-2 shadow-sm space-y-3 text-center">
                         <Link to={"/dashboard"} className="tooltip" data-tip="Click to Profile">
-                            <img className='w-25 h-25 mx-auto rounded-full overflow-hidden border border-secondary' src={user?.photoURL || "https://i.ibb.co.com/kgMj4c4G/pngtree-user-icon-isolated-on-abstract-background-png-image-5192160.jpg"} alt="Avater" />
+                            <img className='w-25 h-25 mx-auto rounded-full overflow-hidden border border-secondary' src={user?.photoURL || "https://i.ibb.co.com/kgMj4c4G/pngtree-user-icon-isolated-on-abstract-background-png-image-5192160.jpg"} alt="Avatar" referrerPolicy='no-referrer' />
                         </Link>
 
                         <h2 className='text-xl font-semebold'>{user?.displayName}</h2>
