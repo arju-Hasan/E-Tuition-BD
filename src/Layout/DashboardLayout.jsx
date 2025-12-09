@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { MdOutlineLogout } from "react-icons/md";
-import NavBar from '../Pages/Home/Shard/Navbar';
 import { Link, NavLink, Outlet } from 'react-router';
 import Footer from '../Pages/Home/Shard/Footer';
 import useRole from '../hooks/useRole';
 import logoImg from '../assets/logo.png'
-import { FaMotorcycle, FaRegCreditCard, FaTasks, FaUsers } from 'react-icons/fa';
+import { FaMotorcycle, FaTasks, FaUsers } from 'react-icons/fa';
 import { RiEBikeFill } from 'react-icons/ri';
 import { SiGoogletasks } from 'react-icons/si';
-import { CiDeliveryTruck } from 'react-icons/ci';
-import { SquareArrowLeft, SquareArrowRight } from 'lucide-react';
+import { SquareArrowLeft} from 'lucide-react';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
 import useAuth from '../Hooks/useAuth';
 import { GiHamburgerMenu } from "react-icons/gi";
+import Swal from 'sweetalert2';
+import { FaCodePullRequest, FaSignsPost } from 'react-icons/fa6';
+import { CgProfile } from "react-icons/cg";
 
 const DashboardLayout = () => {
     const { user, logOut, loading } = useAuth();
@@ -44,14 +45,34 @@ const DashboardLayout = () => {
     return () => drawer.removeEventListener("change", handleChange);
   }, []);
 
+//  const handleLogOut = () => {
+//         logOut()
+//             .then()
+//             .catch(error => {
+//                 console.log(error)
+//             })
+//     }
  const handleLogOut = () => {
-        logOut()
-            .then()
-            .catch(error => {
-                console.log(error)
-            })
-    }
 
+        Swal.fire({
+            title: "Are you sure?",
+            text: "LogOut Right Now",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+              logOut()            
+                  .then() 
+                   Swal.fire({ title: "Deleted!",
+                        text: "Logout Successful",
+                        icon: "success"
+               }); 
+            }
+        });
+    }
 
 
     return (
@@ -59,7 +80,7 @@ const DashboardLayout = () => {
             <input id="my-drawer-4" type="checkbox" className="drawer-toggle"  defaultChecked />
             <div className="drawer-content">
                 {/* Navbar */}
-                <nav className="navbar w-full bg-base-300">
+                <nav className="navbar w-full bg-base-200">
                 <label htmlFor="my-drawer-4" aria-label="open sidebar" className="btn btn-square btn-ghost text-primary">
                     {isOpen ? <SquareArrowLeft /> : <GiHamburgerMenu className='text-2xl' />}
                 </label>
@@ -85,13 +106,12 @@ const DashboardLayout = () => {
                     <ul className="menu w-full grow">
                         {/* List item */}
                         <li>
-                            <Link className='is-drawer-close:hidden bg-base-100 is-drawer-close:tooltip-right mb-5' to="/"><img src={logoImg} alt="" /></Link>
+                            <Link className='is-drawer-close:hidden bg-base-300 is-drawer-close:tooltip-right mb-5' to="/"><img src={logoImg} alt="" /></Link>
                         </li>                      
 
-                        {/* all user */}
-                      
+                        {/* all user */}                      
                         {                            
-                            <div className="is-drawer-close:hidden is-drawer-close:tooltip-right mb-5">
+                            <div className="is-drawer-close:hidden is-drawer-close:tooltip-right mb-5 shadow-2xl shadow-secondary rounded-2xl m-3 p-2">
                                  <img className='w-30 h-30 mx-auto rounded-full overflow-hidden border border-secondary my-5' src={userData?.photoURL || "https://i.ibb.co.com/kgMj4c4G/pngtree-user-icon-isolated-on-abstract-background-png-image-5192160.jpg"} alt="Avater" />
                                 <h2 className='text-xl font-bold text-center'>{userData?.displayName}</h2>
                                 <p className='text-center mx-auto font-extrabold'>ID: {userData?.userId}</p>
@@ -100,30 +120,43 @@ const DashboardLayout = () => {
 
                             </div>
                         }
+                        <div className='m-3 space-y-2 font-semibold'>
                         {/* user only links */}
                         {
                             role === 'user' && <>
                               {/* <h2></h2> */}
-                                <li>
-                                    <NavLink className="is-drawer-close:hidden is-drawer-close:tooltip-right" data-tip="Assigned Deliveries" to="/dashboard">
+                                <li className=''>
+                                    <NavLink className={({ isActive }) =>
+                                    `is-drawer-close:hidden is-drawer-close:tooltip-right ${
+                                    isActive ? "bg-secondary text-white font-bold" : ""
+                                    }`} data-tip="Assigned Deliveries" to="/dashboard">
                                         <FaTasks />
                                         <span className="is-drawer-close:hidden">Dashboard</span>
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink className="is-drawer-close:hidden is-drawer-close:tooltip-right" data-tip="Completed Deliveries" to="/dashboard/tutorrequest">
+                                    <NavLink className={({ isActive }) =>
+                                    `is-drawer-close:hidden is-drawer-close:tooltip-right ${
+                                    isActive ? "bg-secondary text-white font-bold" : ""
+                                    }`} data-tip="Completed Deliveries" to="/dashboard/tutorrequest">
                                         <SiGoogletasks />
                                         <span className="is-drawer-close:hidden">Tutor Request</span>
                                     </NavLink>
                                 </li>
                                  <li>
-                                    <NavLink className="is-drawer-close:hidden is-drawer-close:tooltip-right" data-tip="Completed Deliveries" to="/dashboard/sPosted">
+                                    <NavLink className={({ isActive }) =>
+                                    `is-drawer-close:hidden is-drawer-close:tooltip-right ${
+                                    isActive ? "bg-secondary text-white font-bold" : ""
+                                    }`} data-tip="Completed Deliveries" to="/dashboard/sPosted">
                                         <SiGoogletasks />
                                         <span className="is-drawer-close:hidden">Posted Request</span>
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink className="is-drawer-close:hidden is-drawer-close:tooltip-right" data-tip="Completed Deliveries" to="/dashboard/userprofile">
+                                    <NavLink className={({ isActive }) =>
+                                    `is-drawer-close:hidden is-drawer-close:tooltip-right ${
+                                    isActive ? "bg-secondary text-white font-bold" : ""
+                                    }`} data-tip="Completed Deliveries" to="/dashboard/userprofile">
                                         <SiGoogletasks />
                                         <span className="is-drawer-close:hidden">Update profile</span>
                                     </NavLink>
@@ -135,26 +168,44 @@ const DashboardLayout = () => {
                         {
                             role ==='tutor' && <>
                                  <li>
-                                    <NavLink className="is-drawer-close:hidden is-drawer-close:tooltip-right" data-tip="Assigned Deliveries" to="/dashboard">
-                                        <FaTasks />
-                                        <span className="is-drawer-close:hidden">Dashboard</span>
-                                    </NavLink>
+                                   <NavLink
+                                to="/dashboard" end
+                                className={({ isActive }) =>
+                                    `is-drawer-close:hidden is-drawer-close:tooltip-right ${
+                                    isActive ? "bg-secondary text-white font-bold" : ""
+                                    }`
+                                } data-tip="Assigned Deliveries" 
+                                >
+                                <FaTasks />
+                                <span className="is-drawer-close:hidden">Dashboard</span>
+                                </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink className="is-drawer-close:hidden is-drawer-close:tooltip-right" data-tip="Assigned Deliveries" to="/dashboard/jobrequest">
-                                        <FaTasks />
+                                    <NavLink className={({ isActive }) =>
+                                    `is-drawer-close:hidden is-drawer-close:tooltip-right ${
+                                    isActive ? "bg-secondary text-white font-bold" : ""
+                                    }`
+                                } data-tip="Assigned Deliveries" to="/dashboard/jobrequest">
+                                        <FaCodePullRequest />
                                         <span className="is-drawer-close:hidden">Job Request</span>
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink className="is-drawer-close:hidden is-drawer-close:tooltip-right" data-tip="Assigned Deliveries" to="/dashboard/postedrequesr">
-                                        <FaTasks />
+                                    <NavLink className={({ isActive }) =>
+                                    `is-drawer-close:hidden is-drawer-close:tooltip-right ${
+                                    isActive ? "bg-secondary text-white font-bold" : ""
+                                    }`} 
+                                    data-tip="Assigned Deliveries" to="/dashboard/postedrequesr">
+                                                                        <FaSignsPost />
                                         <span className="is-drawer-close:hidden"> Posted Request</span>
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink className="is-drawer-close:hidden is-drawer-close:tooltip-right" data-tip="Assigned Deliveries" to="/dashboard/tutorprofile">
-                                        <FaTasks />
+                                    <NavLink className={({ isActive }) =>
+                                    `is-drawer-close:hidden is-drawer-close:tooltip-right ${
+                                    isActive ? "bg-secondary text-white font-bold" : ""
+                                    }`} data-tip="Assigned Deliveries" to="/dashboard/tutorprofile">
+                                        <CgProfile />
                                         <span className="is-drawer-close:hidden">Update Profile</span>
                                     </NavLink>
                                 </li>
@@ -165,40 +216,58 @@ const DashboardLayout = () => {
                         {
                             role === 'admin' && <>
                                  <li>
-                                    <NavLink className="is-drawer-close:hidden is-drawer-close:tooltip-right" data-tip="Assigned Deliveries" to="/dashboard">
+                                    <NavLink className={({ isActive }) =>
+                                    `is-drawer-close:hidden is-drawer-close:tooltip-right ${
+                                    isActive ? "bg-secondary text-white font-bold" : ""
+                                    }`} data-tip="Assigned Deliveries" to="/dashboard">
+                                    end
                                         <FaTasks />
                                         <span className="is-drawer-close:hidden">Dashboard</span>
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink className="is-drawer-close:hidden is-drawer-close:tooltip-right" data-tip="Approve Riders" to="/dashboard/pjrequest">
+                                    <NavLink className={({ isActive }) =>
+                                    `is-drawer-close:hidden is-drawer-close:tooltip-right ${
+                                    isActive ? "bg-secondary text-white font-bold" : ""
+                                    }`} data-tip="Approve Riders" to="/dashboard/pjrequest">
                                         <FaMotorcycle />
                                         <span className="is-drawer-close:hidden">Tutor Request</span>
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink className="is-drawer-close:hidden is-drawer-close:tooltip-right" data-tip="Assign Riders" to="/dashboard/purequest">
+                                    <NavLink className={({ isActive }) =>
+                                    `is-drawer-close:hidden is-drawer-close:tooltip-right ${
+                                    isActive ? "bg-secondary text-white font-bold" : ""
+                                    }`} data-tip="Assign Riders" to="/dashboard/purequest">
                                         <RiEBikeFill />
                                         <span className="is-drawer-close:hidden">User Request</span>
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink className="is-drawer-close:hidden is-drawer-close:tooltip-right" data-tip="Users Management" to="/dashboard/users-management">
+                                    <NavLink className={({ isActive }) =>
+                                    `is-drawer-close:hidden is-drawer-close:tooltip-right ${
+                                    isActive ? "bg-secondary text-white font-bold" : ""
+                                    }`} data-tip="Users Management" to="/dashboard/users-management">
                                         <FaUsers></FaUsers>
                                         <span className="is-drawer-close:hidden">Users Management</span>
                                     </NavLink>
                                 </li>
                             </>
-                        }
-
+                        }                       
+                        
                         {/* List item */}
                         <li>
-                            <button onClick={handleLogOut} className="is-drawer-close:hidden is-drawer-close:tooltip-right" data-tip="Settings">
+                            <button onClick={handleLogOut} className={
+                                    `is-drawer-close:hidden is-drawer-close:tooltip-right  "bg-secondary font-bold" 
+                                    `}  data-tip="Settings">
                                 {/* Settings icon */}
                                 <MdOutlineLogout />
                                 <span className="is-drawer-close:hidden">LogOut</span>
                             </button>
                         </li>
+
+                        </div>
+
                     </ul>
                 </div>
             </div>

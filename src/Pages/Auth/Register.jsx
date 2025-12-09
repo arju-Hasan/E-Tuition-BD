@@ -53,6 +53,7 @@ const Register = () => {
             axios.post(image_API_URL, formData)
                 .then(res => {
                     const photoURL = res.data.data.url;
+                    // const available = "Available"
 
                     // create user in the database
                     const userInfo = {
@@ -65,7 +66,8 @@ const Register = () => {
                         experience: data.experience,
                         gender: data.gender,
                         district: data.district,
-                        Phone: data.phone
+                        Phone: data.phone,
+                        available: "available",
                     })
                     }
                     console.log(userInfo);
@@ -86,11 +88,13 @@ const Register = () => {
                             navigate(location.state || '/');
                         })
                         .catch(error => console.log(error))
+                        // toast.error(err.message || "Something went wrong");
                 })
         })
         .catch(error => {
-            console.log(error)
-        })
+        console.log(error);
+        toast.error(error.message || "Something went wrong");
+        });
     }
     const password = watch("password");
     const [show, setShow] = useState(false);

@@ -60,7 +60,15 @@ const TutorRequest = () => {
       onSubmit={handleSubmit(onSubmit)}
       className="mx-auto p-5 shadow rounded space-y-3"
     >
-      <h2 className="text-xl font-bold text-center">Tutor Request</h2>
+      {/* <h2 className="text-xl font-bold text-center">Tutor Request</h2> */}
+      <div className="">        
+        <h2 className='text-2xl md:text-4xl font-bold text-center underline underline-offset-2 decoration-primary decoration-4 text-secondary'>
+            <span             
+            className='text-primary font-extrabold'>T</span>utor <span 
+            className='text-primary font-extrabold'>r</span>equests 
+            </h2>               
+        <p className='text-center text-info md:text-xl p-2'>You make a tutor Request given valied info.</p>
+    </div>
 
       {/* Name */}
       <fieldset className="fieldset">
@@ -183,8 +191,8 @@ const TutorRequest = () => {
       <input type="hidden" {...register("photoURL")} />
       <input type="hidden" {...register("status")} />
 
-      <button className="w-full bg-green-600 text-white p-2 rounded">
-        Submit
+      <button className="btn-c w-full">
+        Tutors Request
       </button>
     </form>
   );

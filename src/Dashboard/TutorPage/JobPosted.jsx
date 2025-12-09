@@ -36,58 +36,58 @@ console.log(user);
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-
-                axiosSecure.delete(`/tutors/${id}`)
-                    .then(res => {
-                        console.log(res.data);
-
-                        if (res.data.deletedCount) {
-                            // refresh the data in the ui
-                            refetch();
-
-                            Swal.fire({
-                                title: "Deleted!",
-                                text: "Your parcel request has been deleted.",
-                                icon: "success"
-                            });
-                        }
-
-                    })
-
-
+              axiosSecure.delete(`/tutors/${id}`)
+                  .then(res => {
+                    console.log(res.data);
+                      if (res.data.deletedCount) {                            
+                       refetch(); Swal.fire({ title: "Deleted!",
+                        text: "Your parcel request has been deleted.",
+                        icon: "success"
+               }); } })
             }
         });
     }
 
 
   return (
-    <div className=" mx-auto p-5 mt-2">
-      <h2 className="text-2xl font-bold mb-5 text-center">My Tutor Requests ({tutors.length})</h2>
-
+    <div className=" mx-auto p-5 bg-white">
+      {/* <h2 className="text-2xl font-bold mb-5 text-center">My Tutor Requests ({tutors.length})</h2> */}
+      <div className="">        
+        <h2 className='text-2xl md:text-4xl font-bold text-center underline underline-offset-2 decoration-primary decoration-4 text-secondary'>
+            <span 
+            className='text-primary font-extrabold'>M</span>y <span 
+            className='text-primary font-extrabold'>T</span>utor <span 
+            className='text-primary font-extrabold'>r</span>equests ({tutors.length})
+            </h2>               
+        <p className='text-center text-info md:text-xl p-2'>Your Can Request Update and Delete</p>
+    </div>
       {tutors.length === 0 && <p>No tutors found for your email.</p>}
 
       {tutors.map((t) => (
-        <div key={t._id} className="mx-auto m-6">
-            <div className="border p-6">
-                <h2>Name: {t.name}</h2>
-                <h2>Phone No: {t.phone}</h2>
-                <h2>Email: {t.email}</h2>
-                <h2>Salary/Week: {t.salary} TK</h2>
-                <p>Location:{t.region},{t.district}</p>
-                <p>Current Status for Tutor:<span className={`font-bold ${t.status === "pending" ? "text-red-600" : "text-green-600"}`}>{t.status}</span> </p>
-            </div>
-            <div>
-                  <button className='btn btn-square hover:bg-primary'>
-                          <FaMagnifyingGlass />
-                      </button>
-                      <button className='btn btn-square hover:bg-primary mx-2'>
-                          <FiEdit></FiEdit>
-                      </button>
-                      <button
-                          onClick={() => handleParcelDelete(t._id)}
-                          className='btn btn-square hover:bg-primary'>
-                          <FaTrashCan />
-                      </button>
+        <div key={t._id} className="mx-auto m-6 border-primary p-6 border-2 mb-8 rounded-2xl shadow-secondary shadow-2xl">
+            <div className="grid grid-cols-1 md:grid-cols-3  gap-1 ">
+              <img className="h-40 w-40 rounded-2xl" src={t.photoURL} alt="" />
+              <div>
+                <h2 className="text-xl font-bold">Name: {t.name}</h2>
+                <h2 className="text-xl font-bold">Phone No: {t.phone}</h2>
+                <h2 className="text-xl font-bold">Email: {t.email}</h2>
+                <h2 className="text-xl font-bold">Salary/Week: <span className="text-secondary">{t.salary}</span> TK</h2>
+                <p className="text-xl font-bold">Location:{t.region},{t.district}</p>
+                <p className="text-xl font-bold">Current Status for Tutor:<span className={`font-bold ${t.status === "pending" ? "text-primary" : "text-secondary"}`}>{t.status}</span> </p>
+                </div>            
+              <div className="flex gap-4 md:flex-col items-center justify-center">
+                  <button className='btn-c hover:bg-primary'>
+                  <FaMagnifyingGlass />
+                  </button>
+                  <button className='btn-c hover:bg-primary'>
+                    <FiEdit />
+                  </button>
+                  <button
+                    onClick={() => handleParcelDelete(t._id)}
+                    className='btn-c hover:bg-primary'>
+                    <FaTrashCan />
+                  </button>
+              </div>
             </div>
         </div>
       ))}
