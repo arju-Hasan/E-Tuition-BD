@@ -184,9 +184,9 @@ const TutionRequest = () => {
         className="border p-2 w-full rounded"
       >
         <option value="" disabled>Select Medium</option>
-        <option value="home">Banhla Medium</option>
-        <option value="online">English Medium</option>
-        <option value="group">Arabi Medium</option>
+        <option value="Banhla Medium">Banhla Medium</option>
+        <option value="English Medium">English Medium</option>
+        <option value="Arabi Medium">Arabi Medium</option>
       </select>
       </fieldset>
       

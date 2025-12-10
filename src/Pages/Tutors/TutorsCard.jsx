@@ -102,10 +102,11 @@ const AllTutors = () => {
     };
     loadTutors();
   }, []);
- console.log("after fatch daat", tutors);
+//  console.log("after fatch daat", tutors);
  const tutorss = tutors.filter(
     (tutor) => tutor.status === "approved" || tutor.status === "approved"
-  ); console.log("pending", tutorss);
+  ); 
+//   console.log("pending", tutorss);
 
 
   return (
