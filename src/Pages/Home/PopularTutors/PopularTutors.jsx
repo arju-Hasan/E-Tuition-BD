@@ -60,7 +60,7 @@ const PopularTutors = () => {
                 </div>
                 </SwiperSlide>
             ))}
-            </Swiper>
+        </Swiper>
 
         </div>
         </div>

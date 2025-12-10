@@ -5,13 +5,13 @@ import Login from "../Pages/Auth/Login";
 import Register from "../Pages/Auth/Register";
 import AboutUs from "../Pages/AboutUs/AboutUs";
 import Error404 from "../Components/Error404/Error404";
-import tutiors from "../Pages/Tutors/tutiors";
+import tutiors from "../Pages/Tutors/Tutiors";
 import tuitions from "../Pages/Tuitions/tuitions";
 import DashboardLayout from "../Layout/DashboardLayout";
 import PrivateRoute from "./PrivateRoute";
 import DashboardHome from "../Dashboard/DashboardHome/DashboardHome";
 import AdminRoute from "./AdminRoute";
-import TutorRequest from "../Dashboard/UserPage/TutorRequest";
+import TutorRequest from "../Dashboard/UserPage/TutionRequest";
 import PostedRequest from "../Dashboard/UserPage/PostedRequest";
 import UpdateProfile from "../Dashboard/UserPage/UpdateProfile";
 import PandingJobRequest from "../Dashboard/AdminPage/PandingJobRequest";
@@ -58,6 +58,7 @@ export const router = createBrowserRouter([
       {
         path: '/dashboard/tutorrequest',
         Component: TutorRequest,
+        loader: () => fetch('/serviceCenters.json').then(res => res.json())
       },
       {
         path: '/dashboard/sPosted',

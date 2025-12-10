@@ -6,6 +6,7 @@ import PopularTutors from '../PopularTutors/PopularTutors';
 import LiveCount from '../LiveCount/LiveCount';
 import ReviewUs from '../ReviewUs/ReviewUs';
 import HowWorks from '../HowWorks/HowWorks';
+import Tution from '../Tutions/Tution';
 
 const Home = () => {
     return (
@@ -13,6 +14,7 @@ const Home = () => {
             <Container>
               <Hero />  
               <PopularTutors />
+              <Tution />
               <LiveCount />
               <ReviewUs />
               <HowWorks/>

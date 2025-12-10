@@ -2,11 +2,15 @@ import tuition from '../../../assets/tuition1.webp'
 import { GraduationCap, MapPin, Search } from "lucide-react";
 import styled from 'styled-components';
 import onlineImg from '../../../assets/online.png'
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 
 
 const Hero = () => {
 
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/tutiors");
+  }
 
   return (
     <>
@@ -20,7 +24,7 @@ const Hero = () => {
             <br /> for Home & Online Tuitions</h2>
             <p className="text-xl md:text-3xl flex text-info justify-center md:justify-start items-center  pl-8 gap-2"> <MapPin /> Find the Right Tutor in Your Area</p>
             
-            <button className="relative p-3 grid mx-auto items-start md:items-center rounded-full group mt-6 md:ml-15 shadow shadow-xl shadow-primary hover:shadow-primary hover:shadow-2xl">
+            <button onClick={handleClick} className="relative p-3 grid mx-auto items-start md:items-center rounded-full group mt-6 md:ml-15 shadow shadow-xl shadow-primary hover:shadow-primary hover:shadow-2xl">
             {/* Gradient border on hover */}
             <span className="absolute inset-0 rounded-full bg-gradient-to-r from-[#f15a24] to-[#004aad] opacity-0 group-hover:opacity-100 transition-opacity"></span>
 

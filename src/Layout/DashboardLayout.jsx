@@ -30,7 +30,7 @@ const DashboardLayout = () => {
             .catch(err => console.log(err));
         }
       }, [user?.email]);
-            console.log("DB user data", userData);
+            // console.log("DB user data", userData);
 
      // Checkbox change detect
   useEffect(() => {
@@ -56,17 +56,17 @@ const DashboardLayout = () => {
 
         Swal.fire({
             title: "Are you sure?",
-            text: "LogOut Right Now",
+            text: "Logout Right Now",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
+            confirmButtonText: "Yes, Logout!"
         }).then((result) => {
             if (result.isConfirmed) {
               logOut()            
                   .then() 
-                   Swal.fire({ title: "Deleted!",
+                   Swal.fire({ title: "Logout!!!",
                         text: "Logout Successful",
                         icon: "success"
                }); 
@@ -129,7 +129,7 @@ const DashboardLayout = () => {
                                     <NavLink className={({ isActive }) =>
                                     `is-drawer-close:hidden is-drawer-close:tooltip-right ${
                                     isActive ? "bg-secondary text-white font-bold" : ""
-                                    }`} data-tip="Assigned Deliveries" to="/dashboard">
+                                    }`} data-tip="Assigned Deliveries" to="/dashboard" end >
                                         <FaTasks />
                                         <span className="is-drawer-close:hidden">Dashboard</span>
                                     </NavLink>
@@ -219,8 +219,8 @@ const DashboardLayout = () => {
                                     <NavLink className={({ isActive }) =>
                                     `is-drawer-close:hidden is-drawer-close:tooltip-right ${
                                     isActive ? "bg-secondary text-white font-bold" : ""
-                                    }`} data-tip="Assigned Deliveries" to="/dashboard">
-                                    end
+                                    }`} data-tip="Assigned Deliveries" to="/dashboard" end >
+                                    
                                         <FaTasks />
                                         <span className="is-drawer-close:hidden">Dashboard</span>
                                     </NavLink>

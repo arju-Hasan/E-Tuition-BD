@@ -74,10 +74,10 @@ h66{
     @apply bg-gradient-to-r  from-[#f15a24] via-[#004aad] to-[#f15a24];
   }
 
-
    .btn-c-sm {
     @apply text-sm px-3 py-1.5;
   }
+  
 .swiper-s {
     @apply font-bold text-3xl shadow-lg shadow-secondary py-5 border-1 rounded-2xl flex justify-center items-center h-5/8 w-7/8 mx-auto;
   }

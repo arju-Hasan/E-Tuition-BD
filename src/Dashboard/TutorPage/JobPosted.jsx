@@ -20,10 +20,10 @@ const JobPosted = () => {
         }
     })
     const tutors = result.data || [];
-console.log(tutors);
-console.log(user);
+// console.log(tutors);
+// console.log(user);
 
-    const handleParcelDelete = id => {
+    const handleJobDelete = id => {
         console.log(id);
 
         Swal.fire({
@@ -41,7 +41,7 @@ console.log(user);
                     console.log(res.data);
                       if (res.data.deletedCount) {                            
                        refetch(); Swal.fire({ title: "Deleted!",
-                        text: "Your parcel request has been deleted.",
+                        text: "Your Job request has been deleted.",
                         icon: "success"
                }); } })
             }
@@ -83,7 +83,7 @@ console.log(user);
                     <FiEdit />
                   </button>
                   <button
-                    onClick={() => handleParcelDelete(t._id)}
+                    onClick={() => handleJobDelete(t._id)}
                     className='btn-c hover:bg-primary'>
                     <FaTrashCan />
                   </button>

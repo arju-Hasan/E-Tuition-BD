@@ -161,7 +161,7 @@ const TutorRequest = () => {
         <legend className="fieldset-legend">Region</legend>
         <select
           {...register("region", { required: true })}
-          className="select"
+          className="select w-full"
           defaultValue=""
         >
           <option disabled value="">Pick a region</option>
@@ -176,7 +176,7 @@ const TutorRequest = () => {
         <legend className="fieldset-legend">District</legend>
         <select
           {...register("district", { required: true })}
-          className="select"
+          className="select w-full"
           defaultValue=""
         >
           <option disabled value="">Pick a district</option>

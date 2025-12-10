@@ -135,8 +135,8 @@ const HowItWorks = () => {
                         >
             {subjects.map((sub, index) => (
            <SwiperSlide key={index}>
-            <div className=" flex items-center justify-center">
-                <img src={sub} alt="brand logo" className="h-16 w-auto object-contain" />
+            <div className=" flex m items-center justify-center">
+                <img src={sub} alt="brand logo " className="h-10 w-auto object-contain" />
             </div>
             </SwiperSlide>
             ))}
