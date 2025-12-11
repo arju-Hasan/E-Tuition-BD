@@ -64,9 +64,9 @@ const JobPosted = () => {
       {tutors.length === 0 && <p>No tutors found for your email.</p>}
 
       {tutors.map((t) => (
-        <div key={t._id} className="mx-auto m-6 border-primary p-6 border-2 mb-8 rounded-2xl shadow-secondary shadow-2xl">
+        <div key={t._id} className="mx-auto m-6 border-primary p-6 border-2 mb-8 rounded-2xl shadow-secondary shadow-2xl grid justify-center md:justify-start">
             <div className="grid grid-cols-1 md:grid-cols-3  gap-1 ">
-              <img className="h-40 w-40 rounded-2xl" src={t.photoURL} alt="" />
+              <img className="h-40 w-40 rounded-2xl mx-auto" src={t.photoURL} alt="" />
               <div>
                 <h2 className="text-xl font-bold">Name: {t.name}</h2>
                 <h2 className="text-xl font-bold">Phone No: {t.phone}</h2>

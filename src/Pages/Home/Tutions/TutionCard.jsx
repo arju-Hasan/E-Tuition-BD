@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-import { FaChalkboardTeacher, FaMapMarkerAlt } from "react-icons/fa";
-import { FaMosque } from "react-icons/fa6";
-// import { IoCalendarOutline } from "react-icons/io5";
-import { NavLink } from "react-router";
+import { FaChalkboardTeacher, FaMapMarkerAlt, FaRegCalendarAlt } from "react-icons/fa";
+import { FaMosque, FaSackDollar } from "react-icons/fa6";
+import { NavLink, useNavigate } from "react-router";
 import { BookOpen, School } from "lucide-react";
-import { IoCalendarOutline } from "react-icons/lia";
+import { PiTimerBold } from "react-icons/pi";
+
 
 
 const TutionCard = () => {
   const [tutions, setTutions] = useState([]);
-  
+   const navigate = useNavigate();  
   const axiosSecure =useAxiosSecure();
 
   useEffect(() => {
@@ -21,11 +21,16 @@ const TutionCard = () => {
     loadTutions();
   }, []);
  
- const tution = tutions.filter(
+ const tution = tutions.filter(     //this ia a not set   tutions is maping to day
     (student) => student.status === "approved" || student.status === "approved"
   ); 
     console.log("after fatch daat", tutions);
     console.log("pending", tution);
+
+const handelDetails = (id) =>{
+ console.log("details id", id);
+ navigate(`/tutions/${id}`);
+}
 
 
   return (
@@ -60,31 +65,33 @@ const TutionCard = () => {
 //             View Details
 //           </button>
 //         </div>
-            <div key={student._id}>
+            <div key={student._id} className="border p-4 rounded-xl shadow shadow-secondary hover:shadow-md">
                 <h2 className="text-2xl font-bold px-2">Student Name: {student.name}</h2>
                 <p className="flex items-center"><FaMapMarkerAlt /> {student.region}, {student.district}</p>
-                <div>
-                    <div>
-                        <p><FaMosque /> Medium:{student.medium}</p>
-                        <p><School />Student Class: {student.class}</p>
+                <div className="grid grid-cols-1 md:grid-cols-3 md:justify-center w-full my-2">
+                    <div className="md:mx-auto grid gap-2">
+                        <p className="flex gap-2"><FaMosque /> Medium: {student.medium}</p>
+                        <p className="flex gap-2"><School />Student Class: {student.class}</p>
                     </div>
-                    <div>
-                        <p><IoCalendarOutline />Tutoring Days:{student.day} Day/Week</p>
-                        <p><BookOpen /> Subject:{student.subjact}</p>
+                    <div className="md:mx-auto grid gap-2">
+                        <p className="flex gap-2"><FaRegCalendarAlt />Tutoring Days: {student.day} Day/Week</p>
+                        <p className="flex gap-2"><BookOpen /> Subject: {student.subjact}</p>
                     </div>
-                    <div>
-                        <p><FaChalkboardTeacher /> Preferred Tutor:{student.TeacherGender}</p>
-                        <p><LiaCommentDollarSolid />Salary/Manth :{student.salary}</p>
+                    <div className="md:mx-auto grid gap-2">
+                        <p className="flex gap-2"><FaChalkboardTeacher /> Preferred Tutor: {student.TeacherGender}</p>
+                        <p className="flex gap-2"><FaSackDollar />Salary/Manth : <span className="text-secondary">{student.salary} TK</span></p>
                     </div>
                 </div>
-                <p><BiSolidTimeFive /> {new Date(student.createdAt).toLocaleString("en-US", {
+                <div className="flex justify-between items-center">
+                  <p className="flex gap-2 items-center"><PiTimerBold /> Post Time:  {new Date(student.createdAt).toLocaleString("en-US", {
                     day: "2-digit",
                     month: "long",
                     year: "numeric",
                     hour: "2-digit",
                     minute: "2-digit",
                     })}</p>
-                    <NavLink className="btn-c">See More</NavLink>
+                    <NavLink onClick={() => handelDetails(student._id)} className="btn-c btn-c-sm">See Details</NavLink>
+                </div>
             </div>
       ))}
     </div>

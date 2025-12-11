@@ -20,6 +20,7 @@ import UserManagement from "../Dashboard/AdminPage/UserManagement";
 import JobRequest from "../Dashboard/TutorPage/JobRequest";
 import JobPosted from "../Dashboard/TutorPage/JobPosted";
 import TutorProfile from "../Dashboard/TutorPage/TutorProfile";
+import TutionDetails from "../Pages/Home/Tutions/TutionDetails";
 
 
 export const router = createBrowserRouter([
@@ -43,7 +44,11 @@ export const router = createBrowserRouter([
     {
       path: '/tuitions',
       Component: tuitions
-    }
+    },
+    {
+      path: "/tutions/:id",
+      Component: TutionDetails,
+}
     ]
   },
   {

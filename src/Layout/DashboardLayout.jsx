@@ -14,6 +14,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import Swal from 'sweetalert2';
 import { FaCodePullRequest, FaSignsPost } from 'react-icons/fa6';
 import { CgProfile } from "react-icons/cg";
+import { IoHome } from "react-icons/io5";
 
 const DashboardLayout = () => {
     const { user, logOut, loading } = useAuth();
@@ -121,6 +122,15 @@ const DashboardLayout = () => {
                             </div>
                         }
                         <div className='m-3 space-y-2 font-semibold'>
+                        { <li className=''>
+                                    <NavLink className={({ isActive }) =>
+                                    `is-drawer-close:hidden is-drawer-close:tooltip-right ${
+                                    isActive ? "bg-secondary text-white font-bold" : ""
+                                    }`} data-tip="Assigned Deliveries" to="/" end >
+                                        <IoHome />
+                                        <span className="is-drawer-close:hidden">Home</span>
+                                    </NavLink>
+                                </li>}
                         {/* user only links */}
                         {
                             role === 'user' && <>
