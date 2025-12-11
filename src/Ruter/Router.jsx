@@ -21,6 +21,7 @@ import JobRequest from "../Dashboard/TutorPage/JobRequest";
 import JobPosted from "../Dashboard/TutorPage/JobPosted";
 import TutorProfile from "../Dashboard/TutorPage/TutorProfile";
 import TutionDetails from "../Pages/Home/Tutions/TutionDetails";
+import StudentPay from "../Pages/Home/Tutions/StudentPay";
 
 
 export const router = createBrowserRouter([
@@ -48,7 +49,11 @@ export const router = createBrowserRouter([
     {
       path: "/tutions/:id",
       Component: TutionDetails,
-}
+    },
+    {
+       path: "/student-pay/:email",
+       Component: StudentPay,
+    }
     ]
   },
   {

@@ -6,7 +6,7 @@ import Applayed from '../TutorPage/Applayed';
 
 const TutiorDashboardHome = () => {
     return (
-        <div>
+        <div className='bg-white'>
           <TutorProfile />
           <JobPosted />
           <Applayed />

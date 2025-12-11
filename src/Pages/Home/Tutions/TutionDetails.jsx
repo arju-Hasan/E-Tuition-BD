@@ -39,7 +39,7 @@ const TutionDetails = () => {
     loadDetails();
   }, [id]);
 
-  console.log(tution);
+  console.log(tution?.salary);
   if (!tution) {
     // return <p className="text-center mt-10">Loading...</p>;
     return <p className="w-full h-grow "><Loader /></p>
@@ -99,6 +99,12 @@ const handleChooseJob = async () => {
 }}  
     )
 )}
+
+ const handlePay = (email, salary) => {
+    navigate(`/student-pay/${email}`, {
+        state: { salary }
+    });
+};
   
  
 
@@ -140,13 +146,17 @@ const handleChooseJob = async () => {
         <div className="flex flex-wrap gap-4 mt-4">
             <h2>Applyed Teacher :</h2>
             {tution.teachers?.map((teacher, index) => (
-                <div key={index} className="w-8 h-8 rounded-full overflow-hidden border-2 border-secondary hover:border-primary">
-                <img
+                <div key={index}>
+                    <div  className="w-8 h-8 rounded-full overflow-hidden border-2 border-secondary hover:border-primary">
+                <img onClick={() => handlePay(teacher.email , tution.salary)}
                     src={teacher.photoURL}
                     alt={teacher.name}
                     className="w-full h-full object-cover"
-                /> <p>+</p>
+                /> 
+                
                 </div> 
+                </div>
+                
                 
             ))} <p className="text-2xl">+</p>
         </div>
@@ -157,3 +167,4 @@ const handleChooseJob = async () => {
 };
 
 export default TutionDetails;
+{/* <p>{teacher.email}</p> */}

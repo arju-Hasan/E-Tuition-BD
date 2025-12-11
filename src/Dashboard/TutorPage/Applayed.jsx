@@ -35,8 +35,8 @@ const handelDetails = (id) =>{
 }
 
 return (    
-    <div>
-        <div className="">        
+    <div className='bg-white'>
+        <div className="bg-base-100 border-2 border-primary m-5 rounded-2xl">        
             <h2 className='text-2xl md:text-4xl font-bold text-center underline underline-offset-2 decoration-primary decoration-4 text-secondary p-4'> <span 
             className='text-primary font-extrabold'>M</span>y <span 
             className='text-primary font-extrabold'>A</span>pplied <span 
@@ -48,7 +48,7 @@ return (
                 <div>
                     {
                     myJobs.map(job => (
-                    <div className='border rounded-2xl bg-white grid grid-cols-2 md:grid-cols-3 gap-5 m-10 p-5' key={job._id}>
+                    <div className='border-2 border-secondary hover:border-primary rounded-2xl bg-white grid grid-cols-2 md:grid-cols-3 gap-5 m-10 p-5 shadow-xl hover:shadow-primary shadow-secondary' key={job._id}>
                         <div className='col-span-2 md:col-span-1 mx-auto'>
                             <img className='w-20 h-20 rounded-full mx-auto' src={job.photoURL} alt="" />
                             <h2 className='text-center font-bold mt-2'>Student Photo</h2>
