@@ -66,21 +66,22 @@ const handelDetails = (id) =>{
 //           </button>
 //         </div>
             <div key={student._id} className="border p-4 rounded-xl shadow shadow-secondary hover:shadow-md">
-                <h2 className="text-2xl font-bold px-2">Student Name: {student.name}</h2>
-                <p className="flex items-center"><FaMapMarkerAlt /> {student.region}, {student.district}</p>
-                <div className="grid grid-cols-1 md:grid-cols-3 md:justify-center w-full my-2">
-                    <div className="md:mx-auto grid gap-2">
-                        <p className="flex gap-2"><FaMosque /> Medium: {student.medium}</p>
-                        <p className="flex gap-2"><School />Student Class: {student.class}</p>
-                    </div>
-                    <div className="md:mx-auto grid gap-2">
-                        <p className="flex gap-2"><FaRegCalendarAlt />Tutoring Days: {student.day} Day/Week</p>
-                        <p className="flex gap-2"><BookOpen /> Subject: {student.subjact}</p>
-                    </div>
-                    <div className="md:mx-auto grid gap-2">
-                        <p className="flex gap-2"><FaChalkboardTeacher /> Preferred Tutor: {student.TeacherGender}</p>
-                        <p className="flex gap-2"><FaSackDollar />Salary/Manth : <span className="text-secondary">{student.salary} TK</span></p>
-                    </div>
+                <div className="flex justify-between">
+          <h2 className="text-2xl font-bold px-2">Student Name: {student.name}</h2>
+        <p className="flex justify-end items-center gap-2"><FaMapMarkerAlt /> {student.region}, {student.district}</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 md:justify-center w-full my-2">
+          <img className="profile-img h-33 w-33 mx-auto" src={student.photoURL} alt="" />
+        <div className="border-0 md:border-l-3 pl-0 md:pl-3 border-primary  grid gap-2">
+            <p className="flex gap-2"><FaMosque /> Medium: {student.medium}</p>
+            <p className="flex gap-2"><School />Student Class: {student.class}</p>
+            <p className="flex gap-2"><FaRegCalendarAlt />Tutoring Days: {student.day} Day/Week</p>
+        </div>                            
+        <div className="border-0 md:border-l-3 pl-0 md:pl-3 border-primary grid gap-2">
+            <p className="flex gap-2"><BookOpen /> Subject: {student.subjact}</p>
+            <p className="flex gap-2"><FaChalkboardTeacher /> Preferred Tutor: {student.TeacherGender}</p>
+            <p className="flex gap-2"><FaSackDollar />Salary/Manth : <span className="text-secondary">{student.salary} TK</span> </p>
+        </div>
                 </div>
                 <div className="flex justify-between items-center">
                   <p className="flex gap-2 items-center"><PiTimerBold /> Post Time:  {new Date(student.createdAt).toLocaleString("en-US", {

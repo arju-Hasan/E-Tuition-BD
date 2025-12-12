@@ -1,9 +1,10 @@
 import React from 'react';
+import PandingJobRequest from '../AdminPage/PandingJobRequest';
 
 const AdminDashboardHome = () => {
     return (
         <div>
-            Admin Dashboard Home
+            <PandingJobRequest />
         </div>
     );
 };

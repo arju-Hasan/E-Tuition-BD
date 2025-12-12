@@ -46,7 +46,7 @@ return (
             </h2>               
             <div>
                 <div>
-                    {
+                    {myJobs.length > 0 ? (
                     myJobs.map(job => (
                     <div className='border-2 border-secondary hover:border-primary rounded-2xl bg-white grid grid-cols-2 md:grid-cols-3 gap-5 m-10 p-5 shadow-xl hover:shadow-primary shadow-secondary' key={job._id}>
                         <div className='col-span-2 md:col-span-1 mx-auto'>
@@ -71,6 +71,9 @@ return (
                         </div>
                     </div>
                     ))
+                    ) : (
+                        <h2 className="text-center text-xl font-bold my-10">No Jobs Found</h2>
+                    )
                     }
                 </div>
             </div>

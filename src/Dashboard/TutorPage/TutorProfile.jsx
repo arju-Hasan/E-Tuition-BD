@@ -41,7 +41,7 @@ const TutorProfile = () => {
             </div>
             {/* button section  */}
             <div className='grid grid-cols-3 mt-10 te justify-center items-center'>
-                <NavLink  className="mx-auto btn-c">Update Profile</NavLink>
+                <NavLink to='/dashboard/tutorprofile' className="mx-auto btn-c">Update Profile</NavLink>
                 <NavLink to="/dashboard/postedrequesr" className="mx-auto btn-c">Tution Request</NavLink>
                 <NavLink to="/dashboard" className="mx-auto btn-c">More Details</NavLink>
             </div>

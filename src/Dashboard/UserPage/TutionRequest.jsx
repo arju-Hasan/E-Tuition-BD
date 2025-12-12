@@ -20,8 +20,12 @@ const TutionRequest = () => {
       email: user?.email || "",
       photoURL: user?.photoURL || "",
       status: "pending",
+      payment: "unpaied",
       day: "",
       type: "",
+      medium: "",
+      studentGender: "",
+      TeacherGender: "",
     }
   });
 
@@ -184,7 +188,7 @@ const TutionRequest = () => {
         className="border p-2 w-full rounded"
       >
         <option value="" disabled>Select Medium</option>
-        <option value="Banhla Medium">Banhla Medium</option>
+        <option value="Banhla Medium">Bangla Medium</option>
         <option value="English Medium">English Medium</option>
         <option value="Arabi Medium">Arabi Medium</option>
       </select>

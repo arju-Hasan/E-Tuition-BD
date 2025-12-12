@@ -61,7 +61,7 @@ const JobPosted = () => {
             </h2>               
         <p className='text-center text-info md:text-xl p-2'>Your Can Request Update and Delete</p>
     </div>
-      {tutors.length === 0 && <p>No tutors found for your email.</p>}
+      {tutors.length === 0 && <p className="text-center text-xl font-bold my-10">No tutors found for your Post !</p>}
 
       {tutors.map((t) => (
         <div key={t._id} className="mx-auto m-6 border-primary p-6 border-2 mb-8 rounded-2xl shadow-secondary shadow-2xl grid justify-center md:justify-start">

@@ -78,6 +78,7 @@ const handleChooseJob = async () => {
             photoURL: user.photoURL || "",
             appliedAt: new Date(),
             teacherId: user.userId,
+            phone: user.Phone,
     };
     try {
       const res = await axiosSecure.patch(`/tutions/apply/${tution._id}`, teacherInfo);
@@ -100,10 +101,27 @@ const handleChooseJob = async () => {
     )
 )}
 
- const handlePay = (email, salary) => {
-    navigate(`/student-pay/${email}`, {
-        state: { salary }
-    });
+ const handlePay = (tution) => {
+    if (userData?.email !== tution.email ) {
+      Swal.fire({
+        title: "This post is not yours.",
+        text: "You could have added a new post.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Added a new post",
+        cancelButtonText: "Cancel",
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          // await logOut();
+          navigate("/dashboard/tutorrequest");
+        }
+      });
+      return;
+    } else(
+      navigate("/student-pay", {
+      state: { tution }
+    })
+    )    
 };
   
  
@@ -119,15 +137,18 @@ const handleChooseJob = async () => {
             </div>
         <div className="m-10">
         <div key={tution._id} className="border p-4 rounded-xl shadow shadow-secondary hover:shadow-md">
-        <h2 className="text-2xl font-bold px-2">Student Name: {tution.name}</h2>
-        <p className="flex items-center"><FaMapMarkerAlt /> {tution.region}, {tution.district}</p>
-        <div className="grid grid-cols-1 md:grid-cols-2 md:justify-center w-full my-2">
-        <div className="md:mx-auto grid gap-2">
+        <div className="flex justify-between">
+          <h2 className="text-2xl font-bold px-2">Student Name: {tution.name}</h2>
+        <p className="flex justify-end items-center gap-2"><FaMapMarkerAlt /> {tution.region}, {tution.district}</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 md:justify-center w-full my-2">
+          <img className="profile-img h-33 w-33 mx-auto" src={tution.photoURL} alt="" />
+        <div className="border-0 md:border-l-3 pl-0 md:pl-3 border-primary  grid gap-2">
             <p className="flex gap-2"><FaMosque /> Medium: {tution.medium}</p>
             <p className="flex gap-2"><School />Student Class: {tution.class}</p>
             <p className="flex gap-2"><FaRegCalendarAlt />Tutoring Days: {tution.day} Day/Week</p>
         </div>                            
-        <div className="md:mx-auto grid gap-2">
+        <div className="border-0 md:border-l-3 pl-0 md:pl-3 border-primary  grid gap-2">
             <p className="flex gap-2"><BookOpen /> Subject: {tution.subjact}</p>
             <p className="flex gap-2"><FaChalkboardTeacher /> Preferred Tutor: {tution.TeacherGender}</p>
             <p className="flex gap-2"><FaSackDollar />Salary/Manth : <span className="text-secondary">{tution.salary} TK</span> </p>
@@ -144,21 +165,19 @@ const handleChooseJob = async () => {
             <NavLink onClick={handleChooseJob} className="btn-c btn-c-sm"><span className="text-2xl">+ </span>Chose This Job</NavLink>                            
         </div>
         <div className="flex flex-wrap gap-4 mt-4">
-            <h2>Applyed Teacher :</h2>
-            {tution.teachers?.map((teacher, index) => (
+            <h2>Applyed Teacher : (<span className="font-extrabold text-secondary">{tution.teachers?.length || "0"}</span>)</h2>
+            {/* {tution.teachers?.map((teacher, index) => (
                 <div key={index}>
                     <div  className="w-8 h-8 rounded-full overflow-hidden border-2 border-secondary hover:border-primary">
                 <img onClick={() => handlePay(teacher.email , tution.salary)}
                     src={teacher.photoURL}
                     alt={teacher.name}
                     className="w-full h-full object-cover"
-                /> 
-                
+                />                 
                 </div> 
-                </div>
-                
-                
-            ))} <p className="text-2xl">+</p>
+                </div>  
+            ))}  */}          
+              <button className="hover:bg-secondary px-2 bg-primary rounded-2xl hover:cursor-pointer" onClick={() => handlePay(tution)}>View all teacher</button>
         </div>
     </div>
    </div>

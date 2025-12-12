@@ -20,6 +20,7 @@ const TutorRequest = () => {
       email: user?.email || "",
       photoURL: user?.photoURL || "",
       status: "pending",
+      type:""
     }
   });
 
@@ -99,7 +100,7 @@ const TutorRequest = () => {
         {...register("phone", { required: true })}
         className="border p-2 w-full rounded"
         type="number"
-        placeholder="+8801721602904"
+        placeholder="your number"
       />
       </fieldset>
 
@@ -148,7 +149,7 @@ const TutorRequest = () => {
 
       {/* Experience */}
       <fieldset className="fieldset">
-        <legend className="fieldset-legend">Experience</legend>
+        <legend className="fieldset-legend">Experience year</legend>
       <input
         {...register("experience", { required: true })}
         className="border p-2 w-full rounded"

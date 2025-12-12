@@ -51,8 +51,13 @@ export const router = createBrowserRouter([
       Component: TutionDetails,
     },
     {
-       path: "/student-pay/:email",
+      //  path: "/student-pay/:email",
+       path: "/student-pay",
        Component: StudentPay,
+    },
+    {
+      path: 'teacher-profile/:email',
+      
     }
     ]
   },
