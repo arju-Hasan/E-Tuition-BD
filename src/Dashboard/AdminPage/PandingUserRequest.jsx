@@ -79,9 +79,10 @@ const PandingUserRequest = () => {
             {/* hadding */}
             <h2 className='text-2xl md:text-4xl font-bold text-center underline underline-offset-2 decoration-primary decoration-4 text-secondary'>
             <span             
-            className='text-primary font-extrabold'>T</span>utor <span 
-            className='text-primary font-extrabold'>P</span>ending <span 
-            className='text-primary font-extrabold'>r</span>equests ({pending.length})
+            className='text-primary font-extrabold'>S</span>tudent <span 
+            className='text-primary font-extrabold'>R</span>equests  <span 
+            className='text-primary font-extrabold'>P</span>ending  
+            ({pending.length})
             </h2>               
         <p className='text-center text-info md:text-xl p-2'>Your Can Request Update and Delete</p>
 
@@ -96,6 +97,8 @@ const PandingUserRequest = () => {
           ))}        
           </div> 
         */}
+        {
+            pending.length === 0 ? (<p className='text-center p-20'>Pending is not found </p>):(
         <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
@@ -134,7 +137,7 @@ const PandingUserRequest = () => {
                     </tbody>
                 </table>
             </div>
-  
+            )}
         </div>
     );
 };

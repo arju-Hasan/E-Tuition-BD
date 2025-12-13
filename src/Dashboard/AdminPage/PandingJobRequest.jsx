@@ -96,7 +96,9 @@ const PandingJobRequest = () => {
           ))}        
           </div> 
         */}
-        <div className="overflow-x-auto">
+        {
+            pending.length === 0 ? (<p className='text-center p-20'>Pending is not found </p>):(
+                <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
                     <thead>
@@ -135,8 +137,11 @@ const PandingJobRequest = () => {
                 </table>
             </div>
   
+        
+            )
+        }
         </div>
-    );
+    )
 };
 
 export default PandingJobRequest;
