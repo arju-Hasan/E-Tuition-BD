@@ -79,7 +79,7 @@ const DashboardLayout = () => {
     return (
         <div className="drawer lg:drawer-open max-w-7xl mx-auto ">
             <input id="my-drawer-4" type="checkbox" className="drawer-toggle"  defaultChecked />
-            <div className="drawer-content">
+            <div className="drawer-content flex flex-col min-h-screen">
                 {/* Navbar */}
                 <nav className="navbar w-full bg-base-200">
                 <label htmlFor="my-drawer-4" aria-label="open sidebar" className="btn btn-square btn-ghost text-primary">
@@ -93,7 +93,9 @@ const DashboardLayout = () => {
                     </div>
                 </nav>
                 {/* Page content here */}
-                <Outlet></Outlet>
+                 <main className="flex-grow">
+                    <Outlet />
+                </main>
                 <Footer />
 
             </div>

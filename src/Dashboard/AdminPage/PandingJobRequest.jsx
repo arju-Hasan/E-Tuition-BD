@@ -71,15 +71,7 @@ const PandingJobRequest = () => {
             }
         });
     }
-//     const handleApprove = async (id) => {
-//   const res = await axios.patch(`http://localhost:3000/api/tutor/status/${id}`, {
-//     status: "approved"
-//   });
-// 
-//   if (res.data.modifiedCount > 0) {
-//     alert("Tutor Approved!");
-//   }
-// };  
+
 
 
     return (
