@@ -10,9 +10,9 @@ import { BiSolidUserDetail } from "react-icons/bi";
 import Swal from "sweetalert2";
 
 const StudentPay = () => {
-    const { state } = useLocation();
+    const location = useLocation();
     const [selectedTeacher, setSelectedTeacher] = useState(null);
-    const [tution, setTution] = useState(state.tution || null);
+    const [tution, setTution] = useState(location.state?.tution || null);
     const AxiosSecure = useAxiosSecure();   
     // console.log("tution", tution.email);
 
@@ -65,6 +65,12 @@ const handleTeacherDelete = async (teacherEmail) => {
         params: { email: teacherEmail },
       }
     );
+    
+    if (!tution) {
+  return <Loader />;
+}
+
+
     if (res.data.success) {
       await Swal.fire({
         title: "Deleted!",
@@ -86,38 +92,19 @@ const handleTeacherDelete = async (teacherEmail) => {
   }
 };
 
-// const handleTeacherDelete = async (teacherEmail) => {
-//   try {
-//     const confirmDelete = window.confirm("Are you sure you want to remove this teacher?");
-//     if (!confirmDelete) return;
-// 
-//     const res = await AxiosSecure.delete(`/tutions/${tution._id}/teacher`, {
-//       params: { email: teacherEmail }
-//     });
-// 
-//     if (res.data.success) {
-//       alert("Teacher removed successfully");
-//       // Update local state so UI updates without reload
-//       const updatedTeachers = tution.teachers.filter(t => t.email !== teacherEmail);
-//       setTution(prev => ({ ...prev, teachers: updatedTeachers }));
-//     }
-//   } catch (error) {
-//     console.error(error);
-//     alert("Failed to remove teacher");
-//   }
-// };
 
 const handlePayment = async (teacher) => {
   const paymentInfo = {
     salary: tution.salary,
     TutionId: tution._id,
     StudentEmail: tution.email,
-    StudentName: tution.name
+    StudentName: tution.name,
+    teacherEmail: teacher.email
   };
 
   const res = await AxiosSecure.post(
     '/payment-checkout-session',
-    paymentInfo, teacher
+    paymentInfo
   );
 
   window.location.href = res.data.url;
@@ -129,7 +116,9 @@ const handlePayment = async (teacher) => {
     return (
         <div>
             <Container>
-             <h2>My Post Applaied Teacher:( {tution.teachers?.length})</h2>
+                
+
+             <h2 className="text-2xl font-bold underline p-4">My Post Applaied Teacher:( {tution?.teachers?.length || 0} )</h2>
             <div className="overflow-x-auto mb-4">
                 <table className="table table-zebra">
                     {/* head */}
@@ -147,7 +136,7 @@ const handlePayment = async (teacher) => {
                     </thead>
                     <tbody>
                         {
-                            tution.teachers?.map((teacher, index) => <tr key={teacher._id}>
+                            tution?.teachers?.map((teacher, index) => <tr key={teacher._id}>
                                 <th>{index + 1}</th>
                                 <td><img className="w-10 h-10 rounded-xl" src={teacher.photoURL} alt="" /></td>
                                 <td className="font-bold">{teacher.name}</td>
@@ -158,17 +147,18 @@ const handlePayment = async (teacher) => {
                                 <td>
                                     {
                                         tution?.payment === 'paid' ?
-                                            <span className='btn btn-square bg-green-800'>Paid</span>
+                                            <span className='btn btn-square bg-green-800 text-white'>Paid</span>
                                             :
                                             <button onClick={() => handlePayment(teacher)} className="btn btn-square hover:bg-primary">Pay</button>
                                     }
                                     <button onClick={() => openTeacherModal(teacher.email)}    className='btn text-2xl btn-square hover:bg-primary mx-2'>    <BiSolidUserDetail />
                                     </button>
+                                    {tution?.payment === 'paid' ?"":
                                     <button
                                         onClick={() =>handleTeacherDelete(teacher.email)}
                                         className='btn btn-square hover:bg-primary'>
                                         <FaTrashCan />
-                                    </button>
+                                    </button>}
                                 </td>
                             </tr>)
                         }

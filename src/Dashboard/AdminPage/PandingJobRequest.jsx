@@ -75,7 +75,7 @@ const PandingJobRequest = () => {
 
 
     return (
-        <div>
+        <div className='mb-10'>
             {/* hadding */}
             <h2 className='text-2xl md:text-4xl font-bold text-center underline underline-offset-2 decoration-primary decoration-4 text-secondary'>
             <span             

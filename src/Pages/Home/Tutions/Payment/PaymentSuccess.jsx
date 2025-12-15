@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router';
+import { NavLink, useSearchParams } from 'react-router';
 import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
 
 const PaymentSuccess = () => {
@@ -8,7 +8,7 @@ const PaymentSuccess = () => {
   const axiosSecure = useAxiosSecure();
 
   const [paymentInfo, setPaymentInfo] = useState(null);
-
+  console.log(paymentInfo);
   useEffect(() => {
     if (sessionId) {
       axiosSecure
@@ -44,7 +44,9 @@ const PaymentSuccess = () => {
       <p>
         <strong>Student Email:</strong> {paymentInfo.StudentEmail}
       </p>
-
+        <p>
+        <strong>teacher Email:</strong> {paymentInfo.teacherEmail}
+      </p>
       <p>
         <strong>Paid Amount:</strong>{' '}
         <span className="text-primary font-semibold">
@@ -55,6 +57,14 @@ const PaymentSuccess = () => {
       <p className="mt-3 text-green-500 font-semibold">
         Payment Status: Successful
       </p>
+      <div className='flex gap-4'>
+        <NavLink to="/dashboard" className="btn btn-primary mt-5">
+          Payment Histary
+        </NavLink>
+        <NavLink to="/" className="btn btn-primary mt-5">
+          Home
+        </NavLink>
+      </div>
     </div>
   );
 };

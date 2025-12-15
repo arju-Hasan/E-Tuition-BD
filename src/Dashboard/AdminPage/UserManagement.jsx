@@ -3,7 +3,9 @@ import React from 'react';
 const UserManagement = () => {
     return (
         <div>
-            Admin User Management
+            <div>
+                <h2 className='text-2xl text-center p-4 font-bold underline'>User Payment history</h2>
+            </div>
         </div>
     );
 };

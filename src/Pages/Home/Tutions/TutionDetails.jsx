@@ -62,7 +62,21 @@ const handleChooseJob = async () => {
         }
       });
       return;
-    } else(
+    } 
+      // 2️⃣ already applied check (email match)
+  const alreadyApplied = tution?.teachers?.some(
+  teacher => teacher.email === user.email
+);
+
+  if (alreadyApplied) {
+    Swal.fire({
+      icon: "info",
+      title: "Already Applied!",
+      text: "You have already applied for this tuition.",
+    });
+    return;
+  }
+  else(
       Swal.fire({
         title: `Are You sure ?`,
         text: `Will you do this job for ${tution.salary} Taka?`,
@@ -165,18 +179,7 @@ const handleChooseJob = async () => {
             <NavLink onClick={handleChooseJob} className="btn-c btn-c-sm"><span className="text-2xl">+ </span>Chose This Job</NavLink>                            
         </div>
         <div className="flex flex-wrap gap-4 mt-4">
-            <h2>Applyed Teacher : (<span className="font-extrabold text-secondary">{tution.teachers?.length || "0"}</span>)</h2>
-            {/* {tution.teachers?.map((teacher, index) => (
-                <div key={index}>
-                    <div  className="w-8 h-8 rounded-full overflow-hidden border-2 border-secondary hover:border-primary">
-                <img onClick={() => handlePay(teacher.email , tution.salary)}
-                    src={teacher.photoURL}
-                    alt={teacher.name}
-                    className="w-full h-full object-cover"
-                />                 
-                </div> 
-                </div>  
-            ))}  */}          
+            <h2>Applyed Teacher : (<span className="font-extrabold text-secondary">{tution.teachers?.length || "0"}</span>)</h2>          
               <button className="hover:bg-secondary px-2 bg-primary rounded-2xl hover:cursor-pointer" onClick={() => handlePay(tution)}>View all teacher</button>
         </div>
     </div>
@@ -186,4 +189,3 @@ const handleChooseJob = async () => {
 };
 
 export default TutionDetails;
-{/* <p>{teacher.email}</p> */}

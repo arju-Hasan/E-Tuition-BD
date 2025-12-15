@@ -66,7 +66,11 @@ return (
                         </div>
                         <div className='col-span-2 md:col-span-1 grid justify-center gap-2'>
                             <button onClick={() => handelDetails(job._id)} className='btn-c btn-c-sm'>View</button>
-                            <button className='btn-c btn-c-sm'>Delete</button>
+                            <button
+                            className={`btn ${job.payment === "paid" ? "bg-green-500" : ""}`}
+                            >
+                            {job.payment}
+                            </button>
                         </div>
                         </div>
                     </div>

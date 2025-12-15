@@ -261,7 +261,7 @@ const DashboardLayout = () => {
                                     isActive ? "bg-secondary text-white font-bold" : ""
                                     }`} data-tip="Users Management" to="/dashboard/users-management">
                                         <FaUsers></FaUsers>
-                                        <span className="is-drawer-close:hidden">Users Management</span>
+                                        <span className="is-drawer-close:hidden">Users Payment</span>
                                     </NavLink>
                                 </li>
                             </>

@@ -8,6 +8,7 @@ import { FaEye } from 'react-icons/fa';
 import { IoEyeOff } from 'react-icons/io5';
 import tuitor from '../../assets/9.png'
 import student from '../../assets/10.png'
+import Swal from 'sweetalert2';
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -19,18 +20,55 @@ const Login = () => {
 
 
 
-    const handleLogin = (data) => {
-        // console.log("Selected Role:", role);
-        console.log('form data', data);
-        signInUser(data.email, data.password, data.role)
-            .then(result => {
-                console.log(result.user)
-                navigate(location?.state || '/')
-            })
-            .catch(error => {
-                console.log(error)
-            })
-    }
+const handleLogin = (data) => {
+  signInUser(data.email, data.password, data.role)
+    .then(() => {
+      navigate(location?.state || '/');
+    })
+   .catch(error => {
+  let message = "Login failed. Please try again.";
+
+  switch (error.code) {
+    case "auth/user-not-found":
+      message = "User not found";
+      break;
+
+    case "auth/wrong-password":
+      message = "Wrong password";
+      break;
+
+    case "auth/invalid-email":
+      message = "Invalid email address";
+      break;
+
+    case "auth/invalid-credential":
+      message = "Email or password is incorrect";
+      break;
+
+    case "auth/missing-email":
+      message = "Please enter your email";
+      break;
+
+    case "auth/missing-password":
+      message = "Please enter your password";
+      break;
+
+    default:
+      message = "Email or password is incorrect";
+  }
+
+  Swal.fire({
+    toast: true,
+    position: "top-end",
+    icon: "error",
+    title: message,
+    showConfirmButton: false,
+    timer: 3000,
+  });
+});
+
+};
+
 
     return (
       <div className='grid grid-cols-1 md:grid-cols-2 place-items-center min-h-screen'>
