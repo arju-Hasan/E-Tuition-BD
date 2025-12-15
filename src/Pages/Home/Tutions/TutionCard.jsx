@@ -37,34 +37,6 @@ const handelDetails = (id) =>{
     // <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 p-5">
     <div className="grid gap-5 p-5">
       {tution?.map((student) => (
-//         <div
-//           key={student._id}
-//           className="bg-white shadow-xl rounded-xl p-4 hover:shadow-2xl transition"
-//           >
-//           <img
-//             src={student.photoURL}
-//             // className="w-24 h-24 mx-auto rounded-full border-4 border-secondary"
-//             className="profile-img w-7/8 mx-auto"
-//             alt=""
-//           />
-// 
-//           <h2 className="text-xl font-bold text-center mt-2">{student.name}</h2>
-//           <p className="text-center text-gray-500">{student.email}</p>
-// 
-//           <div className="mt-3 space-y-1 text-sm">
-//             <p><strong>Phone:</strong> {student.phone}</p>
-//             <p><strong>Status:</strong> {student.status}</p>
-//             <p><strong>Experience:</strong> {student.experience} years</p>
-//             <p><strong>Salary:</strong> {student.salary} BDT</p>
-//             <p><strong>Day:</strong> {student.day}</p>
-//             <p><strong>Type:</strong> {student.type}</p>
-//             <p><strong>Region:</strong> {student.region} → {student.district}</p>
-//           </div>
-// 
-//           <button className="btn-c w-full mt-4">
-//             View Details
-//           </button>
-//         </div>
             <div key={student._id} className="border p-4 rounded-xl shadow shadow-secondary hover:shadow-md">
                 <div className="flex justify-between">
           <h2 className="text-2xl font-bold px-2">Student Name: {student.name}</h2>
@@ -90,7 +62,15 @@ const handelDetails = (id) =>{
                     year: "numeric",
                     hour: "2-digit",
                     minute: "2-digit",
-                    })}</p>
+                    })}<span
+                        className={`font-bold ${
+                          student.payment === 'paid'
+                            ? 'bg-green-600 text-white px-2 py-1 rounded'
+                            : 'text-primary'
+                        }`}
+                      >
+                        {student.payment}
+                      </span></p>
                     <NavLink onClick={() => handelDetails(student._id)} className="btn-c btn-c-sm">See Details</NavLink>
                 </div>
             </div>

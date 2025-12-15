@@ -22,6 +22,8 @@ import JobPosted from "../Dashboard/TutorPage/JobPosted";
 import TutorProfile from "../Dashboard/TutorPage/TutorProfile";
 import TutionDetails from "../Pages/Home/Tutions/TutionDetails";
 import StudentPay from "../Pages/Home/Tutions/StudentPay";
+import PaymentSuccess from "../Pages/Home/Tutions/Payment/PaymentSuccess";
+import PaymentCancelled from "../Pages/Home/Tutions/Payment/PaymentCancelled";
 
 
 export const router = createBrowserRouter([
@@ -51,11 +53,6 @@ export const router = createBrowserRouter([
       Component: TutionDetails,
     },
     {
-      //  path: "/student-pay/:email",
-       path: "/student-pay",
-       Component: StudentPay,
-    },
-    {
       path: 'teacher-profile/:email',
       
     }
@@ -83,6 +80,19 @@ export const router = createBrowserRouter([
         path: '/dashboard/userprofile',
         Component:UpdateProfile
       },
+      {
+        //  path: "/student-pay/:email",
+         path: "/dashboard/student-pay",
+        Component: StudentPay,
+      },
+      {
+        path: 'payment-success',
+        Component: PaymentSuccess
+      }, 
+      {
+        path: 'payment-cancelled', 
+        Component: PaymentCancelled
+      }, 
       {
         path: '/dashboard/pjrequest',
         element:<AdminRoute><PandingJobRequest /></AdminRoute>

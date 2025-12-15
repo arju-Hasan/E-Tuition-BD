@@ -85,18 +85,7 @@ const PandingUserRequest = () => {
             ({pending.length})
             </h2>               
         <p className='text-center text-info md:text-xl p-2'>Your Can Request Update and Delete</p>
-
-        {/* tutors body */}
-        {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {pending.map((tutor) => (
-          <div key={tutor._id} className="border p-4 rounded-xl shadow">
-          <h2 className="text-xl font-bold">{tutor.name}</h2>
-          <p>{tutor.email}</p>
-          <p>Status: {tutor.status}</p>
-          </div>
-          ))}        
-          </div> 
-        */}
+       
         {
             pending.length === 0 ? (<p className='text-center p-20'>Pending is not found </p>):(
         <div className="overflow-x-auto">
@@ -133,7 +122,6 @@ const PandingUserRequest = () => {
                                 </td>
                             </tr>)
                         }
-
                     </tbody>
                 </table>
             </div>

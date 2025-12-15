@@ -118,7 +118,7 @@ const handleChooseJob = async () => {
       });
       return;
     } else(
-      navigate("/student-pay", {
+      navigate("/dashboard/student-pay", {
       state: { tution }
     })
     )    

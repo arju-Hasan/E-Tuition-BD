@@ -7,19 +7,20 @@ import Container from "../../../Components/Container";
 import { FiEdit } from "react-icons/fi";
 import { FaTrashCan } from "react-icons/fa6";
 import { BiSolidUserDetail } from "react-icons/bi";
+import Swal from "sweetalert2";
 
 const StudentPay = () => {
     const { state } = useLocation();
     const [selectedTeacher, setSelectedTeacher] = useState(null);
     const [tution, setTution] = useState(state.tution || null);
     const AxiosSecure = useAxiosSecure();   
-    console.log("tution", tution.email);
+    // console.log("tution", tution.email);
 
 
     const openTeacherModal = async (email) => {
     try {
         // const res = await AxiosSecure.get(`/users/${email}`);
-        const res = await AxiosSecure.delete(`/tutions/${tution._id}/teacher`, {
+        const res = await AxiosSecure.get(`/users/${email}`, {
   params: { email: "user@gmail.com" }
 });
         setSelectedTeacher(res.data); // user info save
@@ -29,27 +30,98 @@ const StudentPay = () => {
     }
 }; 
 
+
 const handleTeacherDelete = async (teacherEmail) => {
   try {
-    const confirmDelete = window.confirm("Are you sure you want to remove this teacher?");
-    if (!confirmDelete) return;
-
-    const res = await AxiosSecure.delete(`/tutions/${tution._id}/teacher`, {
-      params: { email: teacherEmail }
+    // Step 1: Warning alert
+    const firstStep = await Swal.fire({
+      title: "Warning!",
+      text: "This teacher will be removed from your tuition.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Continue",
+      cancelButtonText: "Cancel",
     });
 
+    if (!firstStep.isConfirmed) return;
+
+    // Step 2: Final confirmation
+    const finalStep = await Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to undo this action!",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!",
+    });
+
+    if (!finalStep.isConfirmed) return;
+
+    // Delete API call
+    const res = await AxiosSecure.delete(
+      `/tutions/${tution._id}/teacher`,
+      {
+        params: { email: teacherEmail },
+      }
+    );
     if (res.data.success) {
-      alert("Teacher removed successfully");
-      // Update local state so UI updates without reload
-      const updatedTeachers = tution.teachers.filter(t => t.email !== teacherEmail);
-      setTution(prev => ({ ...prev, teachers: updatedTeachers }));
+      await Swal.fire({
+        title: "Deleted!",
+        text: "Teacher removed successfully.",
+        icon: "success",
+        timer: 1500,
+        showConfirmButton: false,
+      });
+
+      // UI update without reload
+      const updatedTeachers = tution.teachers.filter(
+        (t) => t.email !== teacherEmail
+      );
+      setTution((prev) => ({ ...prev, teachers: updatedTeachers }));
     }
   } catch (error) {
     console.error(error);
-    alert("Failed to remove teacher");
+    Swal.fire("Error", "Failed to remove teacher", "error");
   }
 };
 
+// const handleTeacherDelete = async (teacherEmail) => {
+//   try {
+//     const confirmDelete = window.confirm("Are you sure you want to remove this teacher?");
+//     if (!confirmDelete) return;
+// 
+//     const res = await AxiosSecure.delete(`/tutions/${tution._id}/teacher`, {
+//       params: { email: teacherEmail }
+//     });
+// 
+//     if (res.data.success) {
+//       alert("Teacher removed successfully");
+//       // Update local state so UI updates without reload
+//       const updatedTeachers = tution.teachers.filter(t => t.email !== teacherEmail);
+//       setTution(prev => ({ ...prev, teachers: updatedTeachers }));
+//     }
+//   } catch (error) {
+//     console.error(error);
+//     alert("Failed to remove teacher");
+//   }
+// };
+
+const handlePayment = async (teacher) => {
+  const paymentInfo = {
+    salary: tution.salary,
+    TutionId: tution._id,
+    StudentEmail: tution.email,
+    StudentName: tution.name
+  };
+
+  const res = await AxiosSecure.post(
+    '/payment-checkout-session',
+    paymentInfo, teacher
+  );
+
+  window.location.href = res.data.url;
+};
 
 
 
@@ -140,23 +212,3 @@ const handleTeacherDelete = async (teacherEmail) => {
 };
 
 export default StudentPay;
-
-// 
-// <div className="p-6">
-//             <h1 className="text-2xl font-bold">Teacher Payment Portal</h1>
-// 
-//             {userInfo ? (
-//                 <div className="mt-4 p-4 bg-gray-100 rounded border">
-//                     <p><strong>Name:</strong> {userInfo.displayName}</p>
-//                     <p><strong>Email:</strong> {userInfo.email}</p>
-//                     <p><strong>Role:</strong> {userInfo.role}</p>
-//                     <p><strong>Salary:</strong> {} ৳</p>
-//                     
-//                     
-// 
-//                     {/* এখানেই payment করা যাবে */}
-//                 </div>
-//             ) : (
-//                 <Loader />
-//             )}
-//         </div>
