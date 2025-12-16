@@ -19,7 +19,8 @@ const Home = () => {
               <ReviewUs />
               <HowWorks/>
 
-            </Container>           
+            </Container>    
+                   
         </div>
     );
 };

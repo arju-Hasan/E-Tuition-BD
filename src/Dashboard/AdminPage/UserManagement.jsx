@@ -71,9 +71,15 @@ const handelApproved = async (student) => {
 
 
     return (
-        <div>
+        <div className="pb-10">
             <div>
-                <h2 className='text-2xl text-center p-4 font-bold underline'>User Payment history</h2>
+                <h2 className='text-2xl md:text-4xl font-bold text-center underline underline-offset-2 decoration-primary decoration-4 text-secondary pb-4'>
+                <span             
+                className='text-primary font-extrabold'>U</span>ser <span 
+                className='text-primary font-extrabold'>P</span>ayment <span 
+                className='text-primary font-extrabold'>H</span>istory 
+                </h2>
+                
                 <div>
     <div>
                 <table className="table">
