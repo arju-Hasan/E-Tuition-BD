@@ -1,31 +1,20 @@
 import { useEffect, useState } from "react";
-import {  NavLink, useNavigate } from "react-router";
+import {  NavLink, } from "react-router";
 import useAuth from "../../Hooks/useAuth";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import PostedRequest from "../UserPage/PostedRequest";
 import UpdateProfile from "../UserPage/UpdateProfile";
-import { GrView } from "react-icons/gr";
 import { BiSolidUserDetail } from "react-icons/bi";
 
 
 
 
 const UserDashboardHome = () => {
-    const { user, logOut, loading } = useAuth();
+    const { user } = useAuth();
     const [tutions, setTutions] = useState([]);
-    const navigate = useNavigate();  
     const axiosSecure =useAxiosSecure();
-
-    const [userData, setUserData] = useState(null); //db user data
     
-    useEffect(() => {
-        if (user?.email) {
-          axiosSecure
-            .get(`/users/${user.email}`)
-            .then(res => setUserData(res.data))
-            .catch(err => console.log(err));
-        }
-      }, [user?.email]);
+    
 
   useEffect(() => {
     const loadTutions = async () => {
@@ -38,11 +27,12 @@ const UserDashboardHome = () => {
  const tution = tutions.filter(     //this ia a not set   tutions is maping to day
     (student) => student.email === user.email || student.status === userData?.email
   ); 
- console.log(tution);
-const handelDetails = (id) =>{
- console.log("details id", id);
- navigate(`/tutions/${id}`);
-}
+//  console.log(tution);
+
+// const handelDetails = (id) =>{
+//  console.log("details id", id);
+//  navigate(`/tutions/${id}`);
+// }
 
 
     return (

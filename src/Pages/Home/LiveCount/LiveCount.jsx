@@ -60,6 +60,7 @@ const LiveCount = () => {
           <p className='text-xl'>It's a unique opportunity to learn in the home with your expected future in different categories everything is in favor of your need</p>            
           </div>
         </div>
+      
         {/* online t  */}
         <div className="card bg-white w-max-96 shadow-md hover:shadow-xl hover:shadow-secondary shadow-primary m-2">
           <figure className="px-0 pt-5">

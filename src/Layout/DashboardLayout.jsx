@@ -17,7 +17,7 @@ import { CgProfile } from "react-icons/cg";
 import { IoHome } from "react-icons/io5";
 
 const DashboardLayout = () => {
-    const { user, logOut, loading } = useAuth();
+    const { user, logOut } = useAuth();
     const { role } = useRole();
     const [isOpen, setIsOpen] = useState(false);
     const [userData, setUserData] = useState(null); //db user data

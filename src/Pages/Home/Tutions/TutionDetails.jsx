@@ -7,8 +7,6 @@ import { PiTimerBold } from "react-icons/pi";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
 import Loader from "../../../components/Loading/Loading";
-import { toast } from "react-toastify";
-import { BiSolidCommentAdd } from "react-icons/bi";
 import Swal from "sweetalert2";
 
 const TutionDetails = () => {
@@ -16,7 +14,7 @@ const TutionDetails = () => {
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   const [tution, setTution] = useState(null);
-  const { user, logOut, loading } = useAuth();
+  const { user, logOut } = useAuth();
   const [userData, setUserData] = useState(null); //db user data
   
         useEffect(() => {
@@ -96,7 +94,7 @@ const handleChooseJob = async () => {
     };
     try {
       const res = await axiosSecure.patch(`/tutions/apply/${tution._id}`, teacherInfo);
-
+      console.log("applyed teacher response", res.data);
       Swal.fire({
         icon: "success",
         title: "Job Applied!",

@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { Link, useLocation} from "react-router";
 import Loader from "../../../components/Loading/Loading";
