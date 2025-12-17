@@ -4,7 +4,7 @@ import { Link, NavLink, Outlet } from 'react-router';
 import Footer from '../Pages/Home/Shard/Footer';
 import useRole from '../hooks/useRole';
 import logoImg from '../assets/logo.png'
-import { FaChalkboardTeacher, FaMotorcycle, FaTasks, FaUsers } from 'react-icons/fa';
+import { FaChalkboardTeacher, FaGraduationCap, FaMotorcycle, FaTasks, FaUsers } from 'react-icons/fa';
 import { RiEBikeFill } from 'react-icons/ri';
 import { SiGoogletasks } from 'react-icons/si';
 import { SquareArrowLeft} from 'lucide-react';
@@ -162,6 +162,15 @@ const DashboardLayout = () => {
                                     }`} data-tip="Completed Deliveries" to="/dashboard/sPosted">
                                         <SiGoogletasks />
                                         <span className="is-drawer-close:hidden">Posted Request</span>
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink className={({ isActive }) =>
+                                    `is-drawer-close:hidden is-drawer-close:tooltip-right ${
+                                    isActive ? "bg-secondary text-white font-bold" : ""
+                                    }`} data-tip="Completed Deliveries" to="/dashboard/myteacher">
+                                        <FaGraduationCap />
+                                        <span className="is-drawer-close:hidden">My Teacher</span>
                                     </NavLink>
                                 </li>
                                 <li>

@@ -24,6 +24,7 @@ import TutionDetails from "../Pages/Home/Tutions/TutionDetails";
 import StudentPay from "../Pages/Home/Tutions/StudentPay";
 import PaymentSuccess from "../Pages/Home/Tutions/Payment/PaymentSuccess";
 import PaymentCancelled from "../Pages/Home/Tutions/Payment/PaymentCancelled";
+import MyTeacher from "../Dashboard/UserPage/MyTeacher";
 
 
 export const router = createBrowserRouter([
@@ -75,6 +76,10 @@ export const router = createBrowserRouter([
       {
         path: '/dashboard/sPosted',
         Component: PostedRequest
+      },
+      {
+        path: "/dashboard/myteacher",
+        Component: MyTeacher
       },
       {
         path: '/dashboard/userprofile',

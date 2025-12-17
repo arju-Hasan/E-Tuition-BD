@@ -58,28 +58,31 @@ useEffect(() => {
                     <p className='text-4xl '>{tution.filter(t => t.payment === 'paid').length}</p>
                     <span>Your payment Suceess</span>
                 </div>
-                <div className='p-4 border m-2 shadow shadow-2xl  hover:shadow-primary hover:bg-secondary shadow-secondary rounded-2xl hover:text-white bg-green-400 flex flex-col items-center'>
+                <NavLink to="/dashboard/myteacher" className='p-4 border m-2 shadow shadow-2xl  hover:shadow-primary hover:bg-secondary shadow-secondary rounded-2xl hover:text-white bg-green-400 flex flex-col items-center'>
                     <h2 className='text-xl'>Assigned</h2>
-                    <p className='text-4xl '>0</p>
+                    <p className='text-4xl '>{tution.filter(t => t.status === 'assigned').length}</p>
                     <span>Tutor has been assigned</span>
-                </div>
+                </NavLink>
                 
                 </div>
             </div>
+
+
+
             {/* Payment History Table */}
         <div className="border m-5 p-5 bg-base-200 rounded-2xl">
             <h2 className="text-2xl font-bold p-2 underline p-4">Payment Histary</h2>
-              {/* 1️⃣ Loading */}
+              {/* Loading */}
                 {loading && (
                     <div className="flex justify-center items-center min-h-40">
                     <ChatLoading />
                     </div>
                 )}
 
-                {/* 2️⃣ No Data Found */}
+                {/*  No Data Found */}
                 {!loading && tution.length === 0 && (
                     <div className="text-center text-gray-500 font-semibold py-10">
-                    ❌ No payment history found
+                     No payment history found
                     </div>
                 )}
                 {!loading && tution.length > 0 && (
@@ -128,11 +131,13 @@ useEffect(() => {
             </div>)}
         </div>
 
+
+
             {/* Update Profile and Posted Request */}
              <div className="m-4 bg-base-300 p-4 rounded-4xl mb-15">
                 <UpdateProfile />
              </div>
-             <PostedRequest />
+                <PostedRequest />
         </div>
     );
 };

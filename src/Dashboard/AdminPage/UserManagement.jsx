@@ -5,18 +5,29 @@ import { NavLink } from 'react-router';
 import { BiSolidUserDetail } from 'react-icons/bi';
 import { FcApproval } from 'react-icons/fc';
 import Swal from "sweetalert2";
+import { AiOutlineUsergroupAdd } from "react-icons/ai";
+import ChatLoading from '../../components/Loading/ChatLoading';
 
 const UserManagement = () => {
         const [tutions, setTutions] = useState([]);
         const axiosSecure =useAxiosSecure();
-        
-      useEffect(() => {
-        const loadTutions = async () => {
-          const res = await axiosSecure.get("/tutions");
-          setTutions(res.data.data);
-        };
-        loadTutions();
-      }, []);
+        const [loading, setLoading] = useState(true);
+
+    
+    useEffect(() => {
+    const loadTutions = async () => {
+        try {
+        setLoading(true);
+        const res = await axiosSecure.get("/tutions");
+        setTutions(res.data.data);
+        } catch (error) {
+        console.error(error);
+        } finally {
+        setLoading(false);
+        }
+    };
+    loadTutions();
+    }, []);
      
       const tution = tutions?.filter(
         student => student?.transactionId  ||   student?.payment === 'paid');
@@ -81,7 +92,21 @@ const handelApproved = async (student) => {
                 </h2>
                 
                 <div>
-    <div>
+                <div>
+                {/* Loading */}
+                {loading && (
+                    <div className="flex justify-center items-center min-h-40">
+                    <ChatLoading />
+                    </div>
+                )}
+
+                {/*  No Data Found */}
+                {!loading && tution.length === 0 && (
+                    <div className="text-center text-gray-500 font-semibold py-10">
+                     No payment history found
+                    </div>
+                )}
+                {!loading && tution.length > 0 && (
                 <table className="table">
                     {/* head */}
                     <thead>
@@ -129,7 +154,7 @@ const handelApproved = async (student) => {
                         }
 
                     </tbody> 
-                </table>
+                </table>)}
             </div>
                 </div>
             </div>
