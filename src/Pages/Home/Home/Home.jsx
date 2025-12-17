@@ -7,6 +7,7 @@ import LiveCount from '../LiveCount/LiveCount';
 import ReviewUs from '../ReviewUs/ReviewUs';
 import HowWorks from '../HowWorks/HowWorks';
 import Tution from '../Tutions/Tution';
+import Anamition from '../Hero/Anamition';
 
 const Home = () => {
     return (
@@ -18,7 +19,7 @@ const Home = () => {
               <LiveCount />
               <ReviewUs />
               <HowWorks/>
-
+           <Anamition />
             </Container>    
                    
         </div>

@@ -4,9 +4,27 @@ import homeT from '../../../assets/Tuitior/home-t.png'
 import onlineT from '../../../assets/Tuitior/online.png'
 import groupT from '../../../assets/Tuitior/group.png'
 import { NavLink } from "react-router";
+import { animate, motion, useMotionValue, useTransform, useAnimation } from "framer-motion"
+import { useEffect, useRef } from "react"
+import { useInView } from "framer-motion"
 
 
 const LiveCount = () => {
+// function AnimationOnView() {
+  const count = useMotionValue(0)
+  const rounded = useTransform(count, (value) => Math.round(value))
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true }) // triggers once when in view
+  const controls = useAnimation()
+
+  useEffect(() => {
+    if (inView) {
+      const animation = animate(count, 5002, { duration: 5 })
+      return () => animation.stop()
+    }
+  }, [inView, count])
+
+
   return (
     <>
     {/* live section */}
@@ -19,7 +37,11 @@ const LiveCount = () => {
      <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 w-full h-full text-secondary">
 
         <div className="col-span-1 p-10 flex flex-col justify-center items-center ">
-          <span className="text-3xl text-center ">5002+</span>
+          <span className="flex text-3xl text-center ">
+            <motion.pre ref={ref}>
+                {rounded}
+              </motion.pre>+
+              </span>
           <p className="">Total Applied</p>
         </div>
         <div className="col-span-1 p-10 flex flex-col justify-center items-center">
@@ -47,6 +69,11 @@ const LiveCount = () => {
     </div>
     <div className="m-5 grid grid-cols-1 md:grid-cols-3">
           {/* home-t */}
+          <motion.div          
+            animate={{ rotate: 360 }}            
+             whileHover={{ rotate: 8, scale: 1.10 }} 
+             transition={{ duration: 0.2 }}
+        > 
         <div className="card bg-white w-max-96 shadow-md hover:shadow-xl hover:shadow-secondary shadow-primary m-2">
           <figure className="px-0 pt-5">
              <img
@@ -57,11 +84,16 @@ const LiveCount = () => {
           <div className="card-body bg-base-100 m-5 rounded-xl items-center text-center">
           <h2 className="card-title font-bold text-2xl">Home Tutors</h2>
           <span className='text-info text-md'>Looking for one-to-one classes?</span>
-          <p className='text-xl'>It's a unique opportunity to learn in the home with your expected future in different categories everything is in favor of your need</p>            
+          <p className='text-xl'>It's a unique opportunity to learn in the <br /> home with your expected future in <br /> different categories everything is in favor of your need</p>            
           </div>
-        </div>
+        </div></motion.div>
       
         {/* online t  */}
+        <motion.div            
+            animate={{ rotate: 360 }}           
+             whileHover={{ rotate: 8, scale: 1.10 }} 
+             transition={{ duration: 0.2 }}
+        > 
         <div className="card bg-white w-max-96 shadow-md hover:shadow-xl hover:shadow-secondary shadow-primary m-2">
           <figure className="px-0 pt-5">
              <img
@@ -74,8 +106,13 @@ const LiveCount = () => {
           <span className='text-info text-md'>Are you left with any doubts??</span>
           <p className='text-xl'>Connect with the best tutors from anywhere and take online classes by using different tools Make your life more easier with this process.</p>            
           </div>
-        </div>
-        {/* Group t */}         
+        </div></motion.div>
+        {/* Group t */} 
+         <motion.div            
+            animate={{ rotate: 360 }}           
+             whileHover={{ rotate: 8, scale: 1.10 }} 
+             transition={{ duration: 0.2 }}
+        > 
         <div 
           className="card bg-white w-max-96 shadow-md hover:shadow-xl hover:shadow-secondary shadow-primary m-2">
           <figure className="px-0 pt-5">
@@ -89,7 +126,7 @@ const LiveCount = () => {
           <span className='text-info text-md'>Need the Compititive & Effordable experience?</span>
           <p className='text-xl'>A group of students can full fill their hunger for learning within more affordable tuition fees. Get the opportunity of learning with knowledge sharing!</p>            
           </div> 
-        </div>
+        </div></motion.div>
     </div> 
     {/* Want to become Tutor  */}
     <div className="bg-gradient-to-r from-primary to-secondary hover:p-2 p-1 m-10 w-6/8 mx-auto rounded-2xl">
@@ -102,7 +139,7 @@ const LiveCount = () => {
         <span className="text-secondary">Let's</span> Work Together<br />& <span className="text-secondary">Explore</span> Opportunities
       </div>
       <div className="h-full flex justify-center items-end">        
-        <NavLink to='/' className='btn-c flex mx-auto justify-center'>Join Now</NavLink> 
+        <NavLink to='/dashboard' className='btn-c flex mx-auto justify-center'>Join Now</NavLink> 
       </div>
     </div>
     </div>

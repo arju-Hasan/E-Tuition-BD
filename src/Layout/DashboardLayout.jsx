@@ -4,15 +4,15 @@ import { Link, NavLink, Outlet } from 'react-router';
 import Footer from '../Pages/Home/Shard/Footer';
 import useRole from '../hooks/useRole';
 import logoImg from '../assets/logo.png'
-import { FaMotorcycle, FaTasks, FaUsers } from 'react-icons/fa';
+import { FaChalkboardTeacher, FaMotorcycle, FaTasks, FaUsers } from 'react-icons/fa';
 import { RiEBikeFill } from 'react-icons/ri';
 import { SiGoogletasks } from 'react-icons/si';
 import { SquareArrowLeft} from 'lucide-react';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
 import useAuth from '../Hooks/useAuth';
-import { GiHamburgerMenu } from "react-icons/gi";
+import { GiHamburgerMenu, GiTeacher } from "react-icons/gi";
 import Swal from 'sweetalert2';
-import { FaCodePullRequest, FaSignsPost } from 'react-icons/fa6';
+import { FaCodePullRequest, FaMoneyCheckDollar, FaSignsPost } from 'react-icons/fa6';
 import { CgProfile } from "react-icons/cg";
 import { IoHome } from "react-icons/io5";
 
@@ -151,7 +151,7 @@ const DashboardLayout = () => {
                                     `is-drawer-close:hidden is-drawer-close:tooltip-right ${
                                     isActive ? "bg-secondary text-white font-bold" : ""
                                     }`} data-tip="Completed Deliveries" to="/dashboard/tutorrequest">
-                                        <SiGoogletasks />
+                                        <FaChalkboardTeacher />
                                         <span className="is-drawer-close:hidden">Tutor Request</span>
                                     </NavLink>
                                 </li>
@@ -169,7 +169,7 @@ const DashboardLayout = () => {
                                     `is-drawer-close:hidden is-drawer-close:tooltip-right ${
                                     isActive ? "bg-secondary text-white font-bold" : ""
                                     }`} data-tip="Completed Deliveries" to="/dashboard/userprofile">
-                                        <SiGoogletasks />
+                                        <CgProfile />
                                         <span className="is-drawer-close:hidden">Update profile</span>
                                     </NavLink>
                                 </li>
@@ -242,7 +242,7 @@ const DashboardLayout = () => {
                                     `is-drawer-close:hidden is-drawer-close:tooltip-right ${
                                     isActive ? "bg-secondary text-white font-bold" : ""
                                     }`} data-tip="Approve Riders" to="/dashboard/pjrequest">
-                                        <FaMotorcycle />
+                                        <GiTeacher />
                                         <span className="is-drawer-close:hidden">Tutor Request</span>
                                     </NavLink>
                                 </li>
@@ -251,7 +251,7 @@ const DashboardLayout = () => {
                                     `is-drawer-close:hidden is-drawer-close:tooltip-right ${
                                     isActive ? "bg-secondary text-white font-bold" : ""
                                     }`} data-tip="Assign Riders" to="/dashboard/purequest">
-                                        <RiEBikeFill />
+                                        <FaUsers />
                                         <span className="is-drawer-close:hidden">User Request</span>
                                     </NavLink>
                                 </li>
@@ -260,7 +260,7 @@ const DashboardLayout = () => {
                                     `is-drawer-close:hidden is-drawer-close:tooltip-right ${
                                     isActive ? "bg-secondary text-white font-bold" : ""
                                     }`} data-tip="Users Management" to="/dashboard/users-management">
-                                        <FaUsers></FaUsers>
+                                        <FaMoneyCheckDollar />
                                         <span className="is-drawer-close:hidden">Users Payment</span>
                                     </NavLink>
                                 </li>

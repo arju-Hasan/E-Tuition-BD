@@ -5,7 +5,7 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import PostedRequest from "../UserPage/PostedRequest";
 import UpdateProfile from "../UserPage/UpdateProfile";
 import { BiSolidUserDetail } from "react-icons/bi";
-
+import ChatLoading from "../../components/Loading/ChatLoading";
 
 
 
@@ -13,26 +13,29 @@ const UserDashboardHome = () => {
     const { user } = useAuth();
     const [tutions, setTutions] = useState([]);
     const axiosSecure =useAxiosSecure();
-    
-    
+    const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const loadTutions = async () => {
+    
+useEffect(() => {
+  const loadTutions = async () => {
+    try {
+      setLoading(true);
       const res = await axiosSecure.get("/tutions");
       setTutions(res.data.data);
-    };
-    loadTutions();
-  }, []);
- 
- const tution = tutions.filter(     //this ia a not set   tutions is maping to day
-    (student) => student.email === user.email || student.status === userData?.email
-  ); 
-//  console.log(tution);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  loadTutions();
+}, []);
 
-// const handelDetails = (id) =>{
-//  console.log("details id", id);
-//  navigate(`/tutions/${id}`);
-// }
+
+ const tution = tutions.filter(     //this ia a not set   tutions is maping to day
+    (student) => student.email === user.email 
+  ); 
+
 
 
     return (
@@ -66,7 +69,21 @@ const UserDashboardHome = () => {
             {/* Payment History Table */}
         <div className="border m-5 p-5 bg-base-200 rounded-2xl">
             <h2 className="text-2xl font-bold p-2 underline p-4">Payment Histary</h2>
-            <div>
+              {/* 1️⃣ Loading */}
+                {loading && (
+                    <div className="flex justify-center items-center min-h-40">
+                    <ChatLoading />
+                    </div>
+                )}
+
+                {/* 2️⃣ No Data Found */}
+                {!loading && tution.length === 0 && (
+                    <div className="text-center text-gray-500 font-semibold py-10">
+                    ❌ No payment history found
+                    </div>
+                )}
+                {!loading && tution.length > 0 && (
+                    <div>                
                 <table className="table table-zebra">
                     {/* head */}
                     <thead>
@@ -81,6 +98,7 @@ const UserDashboardHome = () => {
                             <th>Actions</th>
                         </tr>
                     </thead>
+                        
                     <tbody>
                         {
                             tution?.filter(item => item.transactionId).map((teacher, index) => <tr key={teacher._id}>
@@ -104,10 +122,10 @@ const UserDashboardHome = () => {
                                 </td>
                             </tr>)
                         }
-
                     </tbody> 
+                        
                 </table>
-            </div>
+            </div>)}
         </div>
 
             {/* Update Profile and Posted Request */}

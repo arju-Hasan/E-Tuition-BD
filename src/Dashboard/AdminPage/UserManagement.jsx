@@ -115,9 +115,14 @@ const handelApproved = async (student) => {
                                     <NavLink to='/dashboard' className="text-2xl hover:bg-primary btn btn-square">
                                         <BiSolidUserDetail />
                                     </NavLink>
-                                    <NavLink onClick={() => handelApproved(student)} className="text-2xl hover:bg-primary btn btn-square">
+                                    {student.status === 'assigned' ? (
+                                        <NavLink  className="text-2xl bg-secondary btn btn-square">
                                         <FcApproval />
-                                    </NavLink>                                   
+                                    </NavLink>
+                                    ) : (
+                                    <NavLink onClick={() => handelApproved(student)} className="text-2xl hover:bg-primary btn btn-square">
+                                        <AiOutlineUsergroupAdd />
+                                    </NavLink>  )}                                 
                                    
                                 </td>
                             </tr>)

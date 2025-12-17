@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { FaChalkboardTeacher, FaMapMarkerAlt, FaRegCalendarAlt } from "react-icons/fa";
+import { motion, useMotionValue, useTransform, useAnimation } from "framer-motion"
 import { FaMosque, FaSackDollar } from "react-icons/fa6";
 import { NavLink, useNavigate } from "react-router";
 import { BookOpen, School } from "lucide-react";
@@ -43,7 +44,14 @@ const handelDetails = (id) =>{
         <p className="flex justify-end items-center gap-2"><FaMapMarkerAlt /> {student.region}, {student.district}</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 md:justify-center w-full my-2">
+
+        <motion.div          
+                    animate={{ rotate: 360 }}            
+                     whileHover={{ rotate: 1, scale: 1.10 }} 
+                     transition={{ duration: 0.5 }}
+                > 
           <img className="profile-img h-33 w-33 mx-auto" src={student.photoURL} alt="" />
+          </motion.div>
         <div className="border-0 md:border-l-3 pl-0 md:pl-3 border-primary  grid gap-2">
             <p className="flex gap-2"><FaMosque /> Medium: {student.medium}</p>
             <p className="flex gap-2"><School />Student Class: {student.class}</p>

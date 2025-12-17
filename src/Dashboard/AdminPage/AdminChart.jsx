@@ -2,6 +2,7 @@
 import { PieChart, Pie, Sector, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 import useAxiosSecure from '../../Hooks/useAxiosSecure.jsx';
 import { useEffect, useState } from 'react';
+import ChatLoading from '../../Components/Loading/ChatLoading.jsx';
 
 
 // const axiosSecure = useAxiosSecure();
@@ -132,7 +133,7 @@ const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
           <Tooltip />
         </PieChart>
       </ResponsiveContainer>
-            ):(<p>Loading...</p>
+            ):(<ChatLoading />
         )}
         </div>
 
@@ -155,7 +156,7 @@ const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
       </Pie>
      </PieChart>
               
-     ):(<p>Loading...</p>
+     ):(<ChatLoading />
         )}
         </div>
       

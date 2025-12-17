@@ -178,7 +178,7 @@ const handleChooseJob = async () => {
         </div>
         <div className="flex flex-wrap gap-4 mt-4">
             <h2>Applyed Teacher : (<span className="font-extrabold text-secondary">{tution.teachers?.length || "0"}</span>)</h2>          
-              <button className="hover:bg-secondary px-2 bg-primary rounded-2xl hover:cursor-pointer" onClick={() => handlePay(tution)}>View all teacher</button>
+              <button className="hover:bg-secondary px-2 bg-primary rounded-2xl hover:cursor-pointer" onClick={() => handlePay(tution)}>Accept teacher</button>
         </div>
     </div>
    </div>
