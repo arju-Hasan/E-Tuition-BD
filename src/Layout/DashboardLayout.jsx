@@ -47,13 +47,7 @@ const DashboardLayout = () => {
     return () => drawer.removeEventListener("change", handleChange);
   }, []);
 
-//  const handleLogOut = () => {
-//         logOut()
-//             .then()
-//             .catch(error => {
-//                 console.log(error)
-//             })
-//     }
+
  const handleLogOut = () => {
 
         Swal.fire({

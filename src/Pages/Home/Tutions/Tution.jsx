@@ -17,7 +17,7 @@ const Tution = () => {
                     <p className='text-center text-info md:text-xl p-2 order-2'>Here are few of the Verified Students</p>
                     <NavLink to='/tuitions' className='order-3 pr-4 text-end btn-c btn-c-sm mx-auto '>View All</NavLink>
                 </div>               
-                {/* <p className='text-center text-info md:text-xl p-2'>Here's how it works for Tutors</p> */}
+              
             </div>
             <TutionCard />
         </div>

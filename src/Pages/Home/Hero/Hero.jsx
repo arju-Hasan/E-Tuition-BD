@@ -34,9 +34,7 @@ const Hero = () => {
             </span>
             </button>        
         </div>
-        {/* <div className="col-span-3 md:col-span-2 order-1 md:order-2">
-            <img className="col-span-1 p-10 animate-[float_3s_ease-in-out_infinite]" src={tuition} alt="tuition" />
-        </div> */}
+
         <div className="col-span-3 md:col-span-2 order-1 md:order-2">
         <img
             className="w-full h-auto max-w-full p-10 animate-[float_3s_ease-in-out_infinite] object-contain"

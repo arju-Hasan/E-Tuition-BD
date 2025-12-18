@@ -17,7 +17,7 @@ const UpdateProfile = () => {
       axiosSecure.get(`/users/${user.email}`)
         .then(res => {
           setUserData(res.data);
-          setFormData(res.data); // form auto fill
+          // setFormData(res.data); // form auto fill
         });
     }
   }, [user?.email]);

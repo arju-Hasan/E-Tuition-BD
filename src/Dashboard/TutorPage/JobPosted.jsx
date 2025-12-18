@@ -1,8 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
-import axios from "axios";
 import { FaMagnifyingGlass, FaTrashCan } from "react-icons/fa6";
 import { FiEdit } from 'react-icons/fi';
 import useAxiosSecure from "../../Hooks/useAxiosSecure";

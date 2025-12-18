@@ -150,5 +150,3 @@ const HowItWorks = () => {
 };
 
 export default HowItWorks;
-
-// We were featured on:

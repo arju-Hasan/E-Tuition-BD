@@ -19,7 +19,6 @@ import PandingUserRequest from "../Dashboard/AdminPage/PandingUserRequest";
 import UserManagement from "../Dashboard/AdminPage/UserManagement";
 import JobRequest from "../Dashboard/TutorPage/JobRequest";
 import JobPosted from "../Dashboard/TutorPage/JobPosted";
-// import TutorProfile from "../Dashboard/TutorPage/TutorProfile";
 import TutionDetails from "../Pages/Home/Tutions/TutionDetails";
 import StudentPay from "../Pages/Home/Tutions/StudentPay";
 import PaymentSuccess from "../Pages/Home/Tutions/Payment/PaymentSuccess";
@@ -131,7 +130,6 @@ export const router = createBrowserRouter([
       },
       {
         path: '/dashboard/tutorprofile',
-        // element: <TutorProfile />
         element: <TupdateProfile />
       },
       {
@@ -140,18 +138,6 @@ export const router = createBrowserRouter([
       }
     ]
   },
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 {

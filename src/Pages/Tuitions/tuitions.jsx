@@ -12,7 +12,7 @@ const tuitions = () => {
                 className='text-primary font-extrabold'>H</span>ere
                 </h2>
                               
-                {/* <p className='text-center text-info md:text-xl p-2'>Here's how it works for Tutors</p> */}
+              
             </div>
             <TutionCard />
         </div>

@@ -26,8 +26,6 @@ const TutionDetails = () => {
       }
     }, [user?.email]);
  
-    // console.log("db user detales page", userData)
-    // console.log("firebase user", user)
 
   useEffect(() => {
     const loadDetails = async () => {

@@ -3,7 +3,6 @@ import {  NavLink, } from "react-router";
 import useAuth from "../../Hooks/useAuth";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import PostedRequest from "../UserPage/PostedRequest";
-import UpdateProfile from "../UserPage/UpdateProfile";
 import { BiSolidUserDetail } from "react-icons/bi";
 import ChatLoading from "../../components/Loading/ChatLoading";
 

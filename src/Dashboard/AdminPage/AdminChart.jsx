@@ -4,21 +4,6 @@ import useAxiosSecure from '../../Hooks/useAxiosSecure.jsx';
 import { useEffect, useState } from 'react';
 import ChatLoading from '../../Components/Loading/ChatLoading.jsx';
 
-
-// const axiosSecure = useAxiosSecure();
-
-
-// const data = [
-//   { name: 'Student Post', value: 400 },
-//   { name: 'Teacher Post', value: 300 },
-//   { name: 'Payment success', value: 300 },
-//   { name: 'Job Success', value: 200 },
-// ];
-
-
-
-
-
 // clean active shape (NO outside label)
 const renderActiveShape = ({
   cx,

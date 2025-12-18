@@ -8,7 +8,7 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 
 const PostedRequest = () => {
-    const { user, logOut, loading } = useAuth();
+    const { user } = useAuth();
     const [tutions, setTutions] = useState([]);
     const navigate = useNavigate();  
     const axiosSecure =useAxiosSecure();

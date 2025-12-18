@@ -5,7 +5,7 @@ import { NavLink } from 'react-router';
 import Profile from './Profile';
 
 const TutorProfile = () => {
-     const { user, logOut, loading } = useAuth();
+     const { user} = useAuth();
     const axiosSecure = useAxiosSecure();
     // console.log("firebase user", user);
      const [userData, setUserData] = useState(null); //db user data
