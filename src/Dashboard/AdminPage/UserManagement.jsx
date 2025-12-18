@@ -45,7 +45,7 @@ const handelApproved = async (student) => {
         });
         return;
     }
-    try { const res = await fetch(`http://localhost:3000/tutions/${student._id}`,
+    try { const res = await fetch(`https://e-tution-server-one.vercel.app/tutions/${student._id}`,
             { method: "PATCH",
                 headers: {
                     "content-type": "application/json"

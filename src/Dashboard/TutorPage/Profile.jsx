@@ -21,7 +21,7 @@ const Profile = () => {
   // Fetch user info by email
   useEffect(() => {
     if (user?.email) {
-       fetch(`http://localhost:3000/users/${user.email}`)
+       fetch(`https://e-tution-server-one.vercel.app/users/${user.email}`)
         .then(res => res.json())
         .then(data => {
             if (data && data._id) {
@@ -66,7 +66,7 @@ console.log("userId:", userId);
     return;
   }
 
-  fetch(`http://localhost:3000/users/${userId}`, {
+  fetch(`https://e-tution-server-one.vercel.app/users/${userId}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(formData),
