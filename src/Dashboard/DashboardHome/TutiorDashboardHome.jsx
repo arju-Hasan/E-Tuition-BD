@@ -8,6 +8,7 @@ const TutiorDashboardHome = () => {
     return (
         <div className='bg-white'>
           <TutorProfile />
+          
           <JobPosted />
           <Applayed />
             

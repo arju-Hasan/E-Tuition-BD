@@ -15,6 +15,7 @@ import Swal from 'sweetalert2';
 import { FaCodePullRequest, FaMoneyCheckDollar, FaSignsPost } from 'react-icons/fa6';
 import { CgProfile } from "react-icons/cg";
 import { IoHome } from "react-icons/io5";
+import { PiStudentBold } from 'react-icons/pi';
 
 const DashboardLayout = () => {
     const { user, logOut } = useAuth();
@@ -217,8 +218,18 @@ const DashboardLayout = () => {
                                     isActive ? "bg-secondary text-white font-bold" : ""
                                     }`} 
                                     data-tip="Assigned Deliveries" to="/dashboard/postedrequesr">
-                                                                        <FaSignsPost />
+                                        <FaSignsPost />
                                         <span className="is-drawer-close:hidden"> Posted Request</span>
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink className={({ isActive }) =>
+                                    `is-drawer-close:hidden is-drawer-close:tooltip-right ${
+                                    isActive ? "bg-secondary text-white font-bold" : ""
+                                    }`} 
+                                    data-tip="Assigned Deliveries" to="/dashboard/mystudent">
+                                        <PiStudentBold />
+                                        <span className="is-drawer-close:hidden">My Student</span>
                                     </NavLink>
                                 </li>
                                 <li>

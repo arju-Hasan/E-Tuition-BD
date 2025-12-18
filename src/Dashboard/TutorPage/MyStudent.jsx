@@ -5,10 +5,10 @@ import ChatLoading from "../../components/Loading/ChatLoading";
 
 
 
-const MyTeacher = () => {
+const MyStudent = () => {
     const { user } = useAuth();
     const [tutions, setTutions] = useState([]);
-    const [teachers, setTeachers] = useState([]);
+    const [students, setStudents] = useState([]);
     const axiosSecure =useAxiosSecure();
     const [loading, setLoading] = useState(true);
 
@@ -29,13 +29,13 @@ useEffect(() => {
 }, []);
 
  const tution = tutions.filter(     //this ia a not set   tutions is maping to day
-    (student) => student.email === user.email 
+    (student) => student.teacherEmail === user.email 
   ); 
  const email = useMemo(() => {
   return [
     ...new Set(
       tution
-        .map(item => item.teacherEmail)
+        .map(item => item.email)
         .filter(Boolean))
   ];
 }, [tution]);
@@ -43,12 +43,12 @@ useEffect(() => {
 useEffect(() => {
   if (email.length === 0) return; // empty হলে skip
 
-  const teacherEmail = email[0]; // string
-  const loadTeacher = async () => {
+  const studentEmail = email[0]; // string
+  const loadStudent = async () => {
     try {
       setLoading(true);
-      const res = await axiosSecure.get(`/users/${teacherEmail}`);
-      setTeachers(res.data);
+      const res = await axiosSecure.get(`/users/${studentEmail}`);
+      setStudents(res.data);
     } catch (err) {
       console.error(err);
     } finally {
@@ -56,17 +56,17 @@ useEffect(() => {
     }
   };
 
-  loadTeacher();
+  loadStudent();
 }, [email[0]]); 
 
 
 console.log("email", email);
- console.log("teacher", teachers);
+ console.log("student", students);
  console.log("tution", tution);
 
     return (
         <div>
-           <h2 className='text-2xl font-bold p-2 underline'>My Teachers</h2>
+           <h2 className='text-2xl font-bold p-2 underline'>My Student</h2>
            <div>
              {/* Loading */}
                 {loading && (
@@ -85,14 +85,14 @@ console.log("email", email);
                     
                        
             <div className="grid  grid-cols-2 justify-center items-center">
-                <img className="w-24 h-24 md:w-35 md:h-35 xl:w-42 xl:h-42 profile-img my-4 mx-auto" src={teachers.photoURL} alt="" />
+                <img className="w-24 h-24 md:w-35 md:h-35 xl:w-42 xl:h-42 profile-img my-4 mx-auto" src={students.photoURL} alt="" />
                 <div className="border-l-4 pl-4 border-secondary">
-                    <h3 className="font-bold text-lg"><strong>Name: </strong> {teachers.displayName}</h3>
-                    <p><strong>Email:</strong> {teachers.email}</p>
-                    <p><strong>Phone:</strong> {teachers.Phone}</p>                   
-                    <p><strong>ID:</strong> {teachers.userId}</p>
-                    <p><strong>Location: </strong> {teachers.district}</p>
-                    <p><strong>Education Qulafiction</strong> {teachers.lastEducation}</p>
+                    <h3 className="font-bold text-lg"><strong>Name: </strong> {students.displayName}</h3>
+                    <p><strong>Email:</strong> {students.email}</p>
+                    <p><strong>Phone:</strong> {students.phone}</p>                   
+                    <p><strong>ID:</strong> {students.userId}</p>
+                    <p><strong>Location: </strong> {students.district}</p>
+                    <p><strong>Education Qulafiction</strong> {students.lastEducation}</p>
                 </div>
             </div>
          
@@ -104,5 +104,8 @@ console.log("email", email);
     );
 };
 
-export default MyTeacher;
+;
 
+
+
+export default MyStudent;

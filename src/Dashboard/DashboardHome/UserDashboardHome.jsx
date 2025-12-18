@@ -135,7 +135,7 @@ useEffect(() => {
 
             {/* Update Profile and Posted Request */}
              <div className="m-4 bg-base-300 p-4 rounded-4xl mb-15">
-                <UpdateProfile />
+                {/* <UpdateProfile /> */}
              </div>
                 <PostedRequest />
         </div>

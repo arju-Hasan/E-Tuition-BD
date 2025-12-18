@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import useAuth from '../../Hooks/useAuth';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { NavLink } from 'react-router';
+import Profile from './Profile';
 
 const TutorProfile = () => {
      const { user, logOut, loading } = useAuth();
@@ -45,7 +46,7 @@ const TutorProfile = () => {
                 <NavLink to="/dashboard/postedrequesr" className="mx-auto btn-c">Tution Request</NavLink>
                 <NavLink to="/dashboard" className="mx-auto btn-c">More Details</NavLink>
             </div>
-            
+            {/* <Profile /> */}
         </div>
     );
 };

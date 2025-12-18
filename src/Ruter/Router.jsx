@@ -19,14 +19,15 @@ import PandingUserRequest from "../Dashboard/AdminPage/PandingUserRequest";
 import UserManagement from "../Dashboard/AdminPage/UserManagement";
 import JobRequest from "../Dashboard/TutorPage/JobRequest";
 import JobPosted from "../Dashboard/TutorPage/JobPosted";
-import TutorProfile from "../Dashboard/TutorPage/TutorProfile";
+// import TutorProfile from "../Dashboard/TutorPage/TutorProfile";
 import TutionDetails from "../Pages/Home/Tutions/TutionDetails";
 import StudentPay from "../Pages/Home/Tutions/StudentPay";
 import PaymentSuccess from "../Pages/Home/Tutions/Payment/PaymentSuccess";
 import PaymentCancelled from "../Pages/Home/Tutions/Payment/PaymentCancelled";
 import MyTeacher from "../Dashboard/UserPage/MyTeacher";
 import Contact from "../Pages/Contact";
-
+import TupdateProfile from "../Dashboard/TutorPage/TupdateProfile";
+import MyStudent from "../Dashboard/TutorPage/MyStudent";
 
 export const router = createBrowserRouter([
   {
@@ -87,6 +88,10 @@ export const router = createBrowserRouter([
         Component: MyTeacher
       },
       {
+        path: '/dashboard/mystudent',
+        Component: MyStudent
+      },
+      {
         path: '/dashboard/userprofile',
         Component:UpdateProfile
       },
@@ -126,7 +131,8 @@ export const router = createBrowserRouter([
       },
       {
         path: '/dashboard/tutorprofile',
-        element: <TutorProfile />
+        // element: <TutorProfile />
+        element: <TupdateProfile />
       },
       {
         path: '/dashboard/*',
