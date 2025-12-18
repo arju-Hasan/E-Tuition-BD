@@ -25,6 +25,7 @@ import StudentPay from "../Pages/Home/Tutions/StudentPay";
 import PaymentSuccess from "../Pages/Home/Tutions/Payment/PaymentSuccess";
 import PaymentCancelled from "../Pages/Home/Tutions/Payment/PaymentCancelled";
 import MyTeacher from "../Dashboard/UserPage/MyTeacher";
+import Contact from "../Pages/Contact";
 
 
 export const router = createBrowserRouter([
@@ -48,6 +49,10 @@ export const router = createBrowserRouter([
     {
       path: '/tuitions',
       Component: tuitions
+    },
+    {
+      path: '/contact',
+      Component: Contact
     },
     {
       path: "/tutions/:id",

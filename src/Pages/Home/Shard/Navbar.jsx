@@ -38,7 +38,7 @@ const NavBar = () => {
         <li><NavLink className={activeLink} to="/">Home</NavLink></li>
         <li><NavLink className={activeLink} to="/tuitions">Tuitions</NavLink></li>
         <li><NavLink className={activeLink} to="/tutiors">Tutiors</NavLink></li>        
-        <li><NavLink className={activeLink} to="/c">Contact</NavLink></li>
+        <li><NavLink className={activeLink} to="/contact">Contact</NavLink></li>
         {user ? (<>
         <li><NavLink className={activeLink} to="/dashboard">Dashboard</NavLink></li>
         {["user", "super-admin"].includes(userData?.role) && (
