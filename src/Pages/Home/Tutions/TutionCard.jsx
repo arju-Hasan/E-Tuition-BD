@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { FaChalkboardTeacher, FaMapMarkerAlt, FaRegCalendarAlt } from "react-icons/fa";
+import { motion, useMotionValue, useTransform, useAnimation } from "framer-motion"
 import { FaMosque, FaSackDollar } from "react-icons/fa6";
 import { NavLink, useNavigate } from "react-router";
 import { BookOpen, School } from "lucide-react";

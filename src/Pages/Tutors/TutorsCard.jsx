@@ -120,17 +120,9 @@ const AllTutors = () => {
       {tutorss?.map((tutor) => (
         <div
           key={tutor._id}
-          className="bg-white shadow-xl rounded-xl p-4 hover:shadow-2xl transition"
+          className="bg-white rounded-xl p-4 shadow-2xl shadow-secondary transition hover:shadow-primary"
         >
-       {/* <motion.div
-      ref={ref}
-      initial={{ opacity: 0, scale: 0 }}
-      animate={inView ? { opacity: 1, scale: 1 } : { opacity: 1, scale: 1 }} // fallback to visible
-      transition={{
-        duration: 3,
-        scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 },
-      }}
-    > */}
+
       <motion.div
         whileHover={{ scale: 1.3, rotate: 0 }} 
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
@@ -155,9 +147,9 @@ const AllTutors = () => {
             <p><strong>Region:</strong> {tutor.region} → {tutor.district}</p>
           </div>
 
-          <button className="btn-c w-full mt-4">
+          {/* <button className="btn-c w-full mt-4">
             View Details
-          </button>
+          </button> */}
         </div>
       ))}
     </div>

@@ -19,7 +19,7 @@ const Home = () => {
               <LiveCount />
               <ReviewUs />
               <HowWorks/>
-              <Anamition />
+              {/* <Anamition /> */}
             </Container>    
                    
         </div>
